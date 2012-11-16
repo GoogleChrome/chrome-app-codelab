@@ -26,13 +26,13 @@ keeping the sample simple and straightforward.
 
 Tutorial structure
 ------------------
-* Set up development environment
-* Create basic app
-* Create model-view-controller
-* Test app
-* Save and fetch data
-* Manage app lifecycle
-* Access user's data
-* Display links using webview
-* Create multiple views
-* Publish app in Chrome Web Store
+* Set up development environment: [lab1_setup](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab1_setup)
+* Create basic app: [lab2_basic](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab2_basic)
+* Create model-view-controller: [lab3_mvc](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab3_mvc)
+* Test app ***Work-in-progress: [lab4_testing](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab4_testing)
+* Save and fetch data: []()
+* Manage app lifecycle: []()
+* Access user's data: []()
+* Display links using webview: [lab8_webresources](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab8_webresoures)
+* Create multiple views: []()
+* Publish app in Chrome Web Store: [lab_10_publishing](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab_10_publishing)
