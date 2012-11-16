@@ -6,27 +6,17 @@
 
 * Your preferred text editor, we have an under development [Chrome apps plugin](http://chrome-api.storage.googleapis.com/index.html) for [Sublime](http://www.sublimetext.com)
 
-## This lesson teaches you to
-
-* Set up Chrome
-
-* Set up workspace
-
-* Test a simple app
-
 ## Set up Chrome
 
-1. Make sure you are using Chrome Canary. Access `chrome://version` and check if there is a `canary` keyword at the end of the first line:
-
+1. Make sure you are using Chrome Canary. Access `chrome://version` and check if there is a `canary` keyword at the end of the first line:<br>
 ![Checking Chrome version](https://raw.github.com/Meggin/chrome-apps-appcelerated/master/lab1_setup/imgs/screenshot1.png)
 
 1. Enable flags in `chrome://flags`
 
-* Experimental Extension APIs
-* Enable debugging for packed apps
+    * Experimental Extension APIs
+    * Enable debugging for packed apps
 
-1. Enable Developer mode in `chrome://extensions`
-
+1. Enable Developer mode in `chrome://extensions`:<br>
 ![Enabling developer mode](https://raw.github.com/Meggin/chrome-apps-appcelerated/master/lab1_setup/imgs/screenshot2.png)
 
 ## Set up workspace
