@@ -19,25 +19,24 @@
         }
         ```
     * Background page: main.js
-      ``` javascript
-      chrome.app.runtime.onLaunched.addListener(function() {
-          chrome.app.window.create('index.html',
-            {width: 500, height: 309});
-        });
-      ```
-
+        ``` javascript
+        chrome.app.runtime.onLaunched.addListener(function() {
+            chrome.app.window.create('index.html',
+              {width: 500, height: 309});
+          });
+        ```
     * User interface: index.html
-      ```html
-      <html>
-        <head>
-            <meta charset="utf-8">
-            <title>Hello World</title>
-        </head>
-        <body>
-            <h1>Hello, World!</h1>
-        </body>
-      </html>
-      ```
+        ```html
+        <html>
+          <head>
+              <meta charset="utf-8">
+              <title>Hello World</title>
+          </head>
+          <body>
+              <h1>Hello, World!</h1>
+          </body>
+        </html>
+        ```
 
 1. Install and execute your sample app: 
     * Go to chrome://extensions
