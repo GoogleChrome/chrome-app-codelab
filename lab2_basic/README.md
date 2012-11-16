@@ -27,7 +27,6 @@
       ```
 
     * User interface: index.html
-
       ```html
       <html>
         <head>
