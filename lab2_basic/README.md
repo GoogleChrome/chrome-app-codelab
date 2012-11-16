@@ -4,8 +4,8 @@
 
 1. In an empty directory (let's call it &lt;myappdir&gt;), create three files:
     * Manifest: manifest.json
-``` json
-            {
+
+```            {
               "manifest_version": 2,
               "name": "My first app",
               "version": "1",
@@ -14,17 +14,16 @@
                   "scripts": ["main.js"]
                 }
               }
-            }
-```
+            }```
     * Background page: main.js
-``` Javascript
-            chrome.app.runtime.onLaunched.addListener(function() {
+
+```         chrome.app.runtime.onLaunched.addListener(function() {
               chrome.app.window.create('index.html',
                 {width: 500, height: 309});
-            });
-```
+            });```
     * User interface: index.html
-``` html
+
+```
             <html>
               <head>
                   <meta charset="utf-8">
@@ -33,8 +32,7 @@
               <body>
                   <h1>Hello, World!</h1>
               </body>
-            </html>
-```
+            </html>```
 
 1. Install and execute your sample app: 
     * Go to chrome://extensions
