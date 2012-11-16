@@ -66,10 +66,10 @@ The previous sample, although interesting, is not exactly useful. Let's transfor
         });
       };
     }
-    '''
+    ```
 
 1. Change index.html file:
-    ''' html
+    ``` html
     <html ng-app ng-csp>
       <head>
         <script src="angular.min.js"></script>
@@ -95,7 +95,7 @@ The previous sample, although interesting, is not exactly useful. Let's transfor
         </div>
       </body>
     </html>
-    '''
+    ```
 
 Note how the data, stored in an array inside the controller, binds to the view and is automatically updated when it is changed by the controller.
 
