@@ -20,18 +20,19 @@ Learn more about Chrome Apps
 
 About this Tutorial
 -------------------
+The goal of this tutorial is to get you building Chrome apps fast. Once you've comleted the tutorial,
+you will have a simple Todo app. We've done our best to capture some of the trickier parts to the development process
+keeping the sample simple and straightforward.
 
-
-Goals
------
-* 
-
-Structure
----------
+Tutorial structure
+------------------
 * Set up development environment
-* Create app basics and learn development workflow
+* Create basic app
 * Create model-view-controller
-* Test the app
-* Create events to manage app lifecycle
+* Test app
 * Save and fetch data
+* Manage app lifecycle
+* Access user's data
 * Display links using webview
+* Create multiple views
+* Publish app in Chrome Web Store
