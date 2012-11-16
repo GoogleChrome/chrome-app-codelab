@@ -6,42 +6,35 @@
 
     * Manifest: manifest.json
 
-<pre>
-    {
-      "manifest_version": 2,
-      "name": "My first app",
-      "version": "1",
-      "app": {
-        "background": {
-          "scripts": ["main.js"]
+        {
+          "manifest_version": 2,
+          "name": "My first app",
+          "version": "1",
+          "app": {
+            "background": {
+              "scripts": ["main.js"]
+            }
+          }
         }
-      }
-    }
-</pre>
 
     * Background page: main.js
 
-<pre>
-    chrome.app.runtime.onLaunched.addListener(function() {
-      chrome.app.window.create('index.html',
-        {width: 500, height: 309});
-    });
-</pre>
+        chrome.app.runtime.onLaunched.addListener(function() {
+          chrome.app.window.create('index.html',
+            {width: 500, height: 309});
+        });
 
     * User interface: index.html
 
-<pre>
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Hello World</title>
-    </head>
-    <body>
-        <h1>Hello, World!</h1>
-    </body>
-    </html>
-</pre>
+        <html>
+        <head>
+            <meta charset="utf-8">
+            <title>Hello World</title>
+        </head>
+        <body>
+            <h1>Hello, World!</h1>
+        </body>
+        </html>
 
 1. Install and execute your sample app: 
 
@@ -55,7 +48,6 @@
 
 * Click on the "My First App" icon
 
-Takeaway: Packaged apps have three basic pieces. The first and foremost is the manifest.json, which describes your app, requests special permissions, defines important meta information and much more. Second part is the background page, which contains all logic that is not tied to a specific user interface. The last part is the user interface: HTML, CSS, JavaScripts related to the interface, images, etc.
 
 ## Debug, fix, and reload app
 
@@ -71,6 +63,9 @@ Tip: If you have enabled Developer mode in chrome://extensions, packaged apps ca
 
 1. After changing code, right-click on your app and select Reload App to reload the changed files. All Developer Tools windows will be reopened when you reload your app.
 
-Takeaway: Packaged apps can be debugged just like standard web pages using the Chrome Developer Tools. However, since an app doesn't have the Reload control of a browser, when you run in developer mode, a Reload App option is added for your convenience.
+# Takeaways
+
+* Packaged apps have three basic pieces. The first and foremost is the manifest.json, which describes your app, requests special permissions, defines important meta information and much more. Second part is the background page, which contains all logic that is not tied to a specific user interface. The last part is the user interface: HTML, CSS, JavaScripts related to the interface, images, etc.
+* Packaged apps can be debugged just like standard web pages using the Chrome Developer Tools. However, since an app doesn't have the Reload control of a browser, when you run in developer mode, a Reload App option is added for your convenience.
 
 
