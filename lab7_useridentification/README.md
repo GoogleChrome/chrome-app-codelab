@@ -142,7 +142,7 @@ Lets create a button for Sign-in.
 
     <button id="signing">Sign-in</button>
 
-Now we need to make this button do something.  Luckily Angular lets us do some cool stuff here.
+Now we need to make this button do something.  Luckily Angular lets us do some cool stuff here, all we need to do is add items to the model that contains todos.
 
     var onSuccess = function(data) { };
 
