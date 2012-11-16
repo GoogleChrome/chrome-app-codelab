@@ -1,0 +1,11 @@
+{
+  "manifest_version": 2,
+  "name": "MVC with controller - Tutorial 3",
+  "version": "1",
+  "app": {
+    "background": {
+      "scripts": ["main.js"]
+    }
+  }
+}
+
