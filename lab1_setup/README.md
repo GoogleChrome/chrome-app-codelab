@@ -18,7 +18,7 @@
 
 1. Make sure you are using Chrome Canary. Access `chrome://version`and check if there is a `canary` keyword at the end of the first line:
 
-![Checking Chrome version](imgs/screenshot1.png)
+![Checking Chrome version](lab1_setup/imgs/screenshot1.png)
 
 1. Enable flags in `chrome://flags`
 
@@ -28,7 +28,7 @@
 
 1. Enable Developer mode in `chrome://extensions`
 
-![Enabling developer mode](imgs/screenshot2.png)
+![Enabling developer mode](lab1_setup/imgs/screenshot2.png)
 
 ## Set up workspace
 
