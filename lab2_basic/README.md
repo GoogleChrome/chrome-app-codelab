@@ -4,35 +4,40 @@
 
 1. In an empty directory (let's call it &lt;myappdir&gt;), create three files:
     * Manifest: manifest.json
+```
+{
+  "manifest_version": 2,
+  "name": "My first app",
+  "version": "1",
+  "app": {
+    "background": {
+      "scripts": ["main.js"]
+    }
+  }
+}
+```
 
-```            {
-              "manifest_version": 2,
-              "name": "My first app",
-              "version": "1",
-              "app": {
-                "background": {
-                  "scripts": ["main.js"]
-                }
-              }
-            }```
     * Background page: main.js
+```
+chrome.app.runtime.onLaunched.addListener(function() {
+    chrome.app.window.create('index.html',
+      {width: 500, height: 309});
+  });
+```
 
-```         chrome.app.runtime.onLaunched.addListener(function() {
-              chrome.app.window.create('index.html',
-                {width: 500, height: 309});
-            });```
     * User interface: index.html
 
 ```
-            <html>
-              <head>
-                  <meta charset="utf-8">
-                  <title>Hello World</title>
-              </head>
-              <body>
-                  <h1>Hello, World!</h1>
-              </body>
-            </html>```
+<html>
+  <head>
+      <meta charset="utf-8">
+      <title>Hello World</title>
+  </head>
+  <body>
+      <h1>Hello, World!</h1>
+  </body>
+</html>
+```
 
 1. Install and execute your sample app: 
     * Go to chrome://extensions
