@@ -4,6 +4,7 @@
 
 1. In an empty directory (let's call it &lt;myappdir&gt;), create three files:
     * Manifest: manifest.json
+
             {
               "manifest_version": 2,
               "name": "My first app",
@@ -14,6 +15,7 @@
                 }
               }
             }
+            
     * Background page: main.js
 
             chrome.app.runtime.onLaunched.addListener(function() {
