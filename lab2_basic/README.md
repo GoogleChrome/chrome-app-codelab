@@ -5,18 +5,19 @@
 
 1. In an empty directory (let's call it &lt;myappdir&gt;), create three files:
     * Manifest: manifest.json
-```json
-{
-  "manifest_version": 2,
-  "name": "My first app",
-  "version": "1",
-  "app": {
-    "background": {
-      "scripts": ["main.js"]
+    
+    ```json
+    {
+      "manifest_version": 2,
+      "name": "My first app",
+      "version": "1",
+      "app": {
+        "background": {
+          "scripts": ["main.js"]
+        }
+      }
     }
-  }
-}
-```
+    ```
 
     * Background page: main.js
 ```
