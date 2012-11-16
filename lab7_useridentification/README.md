@@ -11,6 +11,9 @@ Most modern applications are attached to the web to synchronise data.  When you 
 Integrating with Goolge
 -----------------------
 
+
+
+
 Intergrating with a 3rd Party Service (FourSquare)
 -----------------------------------------------
 
@@ -23,11 +26,13 @@ When running it unpacked, your app will normally have a different ID depending o
 "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDnyZBBnfu+qNi1x5C0YKIob4ACrA84HdMArTGobttMHIxM2Z6aLshFmoKZa/pbyQS6D5yNywr4KM/llWiY2aV2puIflUxRT8SjjPehswCvm6eWQM+r3mB755m48x+diDl8URJsX4AJ3pQHnKWEvitZcuBh0GTfsLzKU/BfHEaH7QIDAQAB"
 (this is a base 64 encoded version of the app's public key)
 
+Because we are accessing foursquare's API, you will also need to add `https://foursquare.com/*` to your `manifest.json`'s `permissions` array. 
+
 The key must be removed before uploading it to the store.
 
 Now let's get into the nitty gritty.
 
-Create a file called `foursqare.js` in to your application and add the following code:
+Create a file called `foursquare.js` in to your application and add the following code:
 
      var foursquare = {};
 
@@ -129,7 +134,21 @@ What is happening under the hood is as follows:
 
 * Finally, the user is directed to the callback URL which Chrome is listening out for and it will fire the callback event registered in your `launchAuthFlow` call.  The `launchAuthFlow` recieves the URL that was the final redirect target from the authentication flow which in nearly all cases includes the information your app will need to identify the user - in our case the Access Token (which then needs to be exchanged.  The joys of OAuth).
 
+This is really cool (at least Paul Kinlan thinks so).  We have a wrapper to Foursquare's authentication mechanism, and a way to call the API.  Now that we can do this, we really really need to be able to do something useful with it.
+
+So in your `TODO` Javascript file, we need to hook up the API.
+
+Lets create a button for Sign-in.
+
+    <button id="signing">Sign-in</button>
+
+Now we need to make this button do something.  Luckily Angular lets us do some cool stuff here.
+
+    var onSuccess = function(data) { };
+
+    var onError = function(data) { };
+    foursquare.getRecentCheckins(onSuccess, onError);
+
+We will leave it up to the reader to make sure that every time the app is loaded, the new Data is fetched. (Hint, chrome.app.onLaunched evevent).
+
 Now, after all this, you might argue, why is putting locations into my Todo list important if I had already been to the place.  My answer would be: that is a good question. ;) - but you got to see the Chrome Identity API in action.
-
-
-
