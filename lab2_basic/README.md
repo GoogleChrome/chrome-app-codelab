@@ -3,9 +3,7 @@
 ## Create your first packaged app
 
 1. In an empty directory (let's call it &lt;myappdir&gt;), create three files:
-    
-    *   Manifest: manifest.json
-
+    * Manifest: manifest.json
             {
               "manifest_version": 2,
               "name": "My first app",
@@ -16,15 +14,14 @@
                 }
               }
             }
-
-    *   Background page: main.js
+    * Background page: main.js
 
             chrome.app.runtime.onLaunched.addListener(function() {
               chrome.app.window.create('index.html',
                 {width: 500, height: 309});
             });
 
-    *   User interface: index.html
+    * User interface: index.html
 
             <html>
               <head>
@@ -37,15 +34,10 @@
             </html>
 
 1. Install and execute your sample app: 
-
     * Go to chrome://extensions
-
     * Load unpacked extension...
-
     * Select the <myappdir> directory
-
     * Open a new Chrome tab
-
     * Click on the "My First App" icon
 
 
