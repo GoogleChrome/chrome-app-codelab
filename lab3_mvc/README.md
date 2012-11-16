@@ -2,9 +2,9 @@
 
 ## You should also read
 
-* AngularJS in Chrome packaged app tutorial
+* [AngularJS in Chrome packaged app](http://developer.chrome.com/apps/angular_framework.html) tutorial
 
-* AngularJS tutorial
+* [AngularJS](http://angularjs.org/) tutorial
 
 Note: Chrome packaged apps don't enforce any specific framework or programming style. This section and some other parts of this tutorial, however, uses the AngularJS framework. Most of the code from this section was copied, with small changes, from the AngularJS tutorial. 
 
@@ -97,7 +97,7 @@ The previous sample, although interesting, is not exactly useful. Let's transfor
 
 Note how the data, stored in an array inside the controller, binds to the view and is automatically updated when it is changed by the controller.
 
-Takeaways: 
+# Takeaways: 
 
 * Packaged apps are offline first, so the recommended way to include third-party scripts is to download and package them inside your app.
 
