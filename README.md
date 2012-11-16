@@ -8,7 +8,7 @@ Help us make Chrome Apps better!
 --------------------------------
 Chrome apps are still in developer preview-- we know they aren't perfect. But we're trying to do something new here, bridging together the native and web experience, giving developers choice, and users the best experience possible.
 
-For Chrome apps to succeed, we need and want your feedback, we don't want you to have to go in circles to provide it, and we want you to see what others are saying and how we are responding in an open forum.
+For Chrome apps to succeed, we need and want your feedback, we don't want you to have to go in circles to provide it.
 Here's a [very simple feedback form](https://docs.google.com/a/google.com/forms/d/1x3309vpp-KTiHqZWOCQhjVrIWxkm0wEBp2IWMG2ywbU/viewform?id=1x3309vpp-KTiHqZWOCQhjVrIWxkm0wEBp2IWMG2ywbU).
 
 Learn more about Chrome Apps
