@@ -11,7 +11,10 @@ Most modern applications are attached to the web to synchronise data.  When you 
 Integrating with Goolge
 -----------------------
 
-
+    "oauth2": {
+        "client_id": "503955758982.apps.googleusercontent.com",
+        "scopes": ["https://www.googleapis.com/auth/userinfo.profile"]
+    }
 
 
 Intergrating with a 3rd Party Service (FourSquare)
