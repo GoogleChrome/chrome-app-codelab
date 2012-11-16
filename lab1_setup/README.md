@@ -12,7 +12,6 @@
 ![Checking Chrome version](https://raw.github.com/Meggin/chrome-apps-appcelerated/master/lab1_setup/imgs/screenshot1.png)
 
 1. Enable flags in `chrome://flags`
-
     * Experimental Extension APIs
     * Enable debugging for packed apps
 
@@ -23,9 +22,9 @@
 
 If you don't have it yet, [install git](https://help.github.com/articles/set-up-git) and run 
 
-<pre>
+```
     git clone https://github.com/GoogleChrome/chrome-apps-appcelerated-tutorial
-</pre>
+```
 
 Note: for the rest of this tutorial, we will refer to the directory you've cloned the git repository above as &lt;tutorial&gt;
 
