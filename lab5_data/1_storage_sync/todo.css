@@ -1,0 +1,23 @@
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+ul {
+  list-style: none;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+button, input[type=submit] {
+  background-color: #0074CC;
+  background-image: linear-gradient(top, #08C, #05C);
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  color: white;
+}
+
+.done-true {
+  text-decoration: line-through;
+  color: grey;
+}
+
