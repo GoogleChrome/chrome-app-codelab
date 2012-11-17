@@ -16,14 +16,14 @@ function runApp(readInitialState) {
     {id: 'mainwindow', width: 500, height: 309},
     // the create callback gets a reference to the AppWindow obj 
     function(win) {
-      if (readInitialState) {
-        // when the callback is executed, the DOM is loaded but no script was
-        // loaded yet. So, let's attach to the load event.
-        win.contentWindow.addEventListener('load', function() {
+      // when the callback is executed, the DOM is loaded but no script was
+      // loaded yet. So, let's attach to the load event.
+      win.contentWindow.addEventListener('load', function() {
+        if (readInitialState) {
           win.contentWindow.setInitialState();
-        });
-      } else {
-        win.contentWindow.clearInitialState();
-      }
+        } else {
+          win.contentWindow.clearInitialState();
+        }
+      });
     });
 }
