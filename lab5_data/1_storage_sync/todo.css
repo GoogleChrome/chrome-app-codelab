@@ -4,6 +4,8 @@ body {
 
 ul {
   list-style: none;
+  max-height: 120px;
+  overflow-y: auto;
 }
 
 button, input[type=submit] {
