@@ -31,7 +31,7 @@ Tutorial structure
 * Create model-view-controller: [lab3_mvc](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab3_mvc#readme)
 * Test app \*\*\*Work-in-progress: [lab4_testing](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab4_testing#readme)
 * Save and fetch data: [lab5_data](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab5_data#readme)
-* Manage app lifecycle: []()
+* Manage app lifecycle: [lab6_lifecycle](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab6_lifecycle#readme)
 * Access user's data: []()
 * Display links using webview: [lab8_webresources](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab8_webresoures#readme)
 * Create multiple views: []()
