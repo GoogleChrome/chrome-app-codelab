@@ -15,13 +15,13 @@ You can integrate with Google Services easily by using our enhanced OAuth2 flow.
 
 1.  Add an oauth2 scope to your manifest.  The scope defines the Google services that you want to interact with (the user will be prompted when they install about the services you intend to interact with), the client ID is obtained from the [Google Developer console](http://developer.google.com/console).
 
-    {
-        ...,
-        "oauth2": {
-             "client_id": "503955758982.apps.googleusercontent.com",
-             "scopes": ["https://www.googleapis.com/auth/userinfo.profile"]
+        {
+            ...,
+            "oauth2": {
+                "client_id": "503955758982.apps.googleusercontent.com",
+                "scopes": ["https://www.googleapis.com/auth/userinfo.profile"]
+            }
         }
-    }
 
 2.  Start the authentication flow.  We manage the rest.
 
