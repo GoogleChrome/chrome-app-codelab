@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+  "name": "Multiple Views - Lab 9",
+  "version": "1",
+  "app": {
+    "background": {
+      "scripts": ["main.js"]
+    }
+  },
+  "permissions": ["storage", "webview"]
+}
+
