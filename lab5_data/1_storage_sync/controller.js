@@ -1,10 +1,14 @@
 function TodoCtrl($scope) {
+
+  // Notice that chrome.storage.sync.get is asynchronous
   chrome.storage.sync.get('todolist', function(value) {
+    // The $apply is only necessary to execute the function inside Angular scope
     $scope.$apply(function() {
       $scope.load(value);
     });
   });
 
+  // If there is saved data in storage, use it. Otherwise, bootstrap with sample todos
   $scope.load = function(value) {
     if (value && value.todolist) {
       $scope.todos = value.todolist;
