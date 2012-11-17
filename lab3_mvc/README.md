@@ -6,7 +6,7 @@
 
 * [AngularJS](http://angularjs.org/) tutorial
 
-Note: Chrome packaged apps don't enforce any specific framework or programming style. This section and some other parts of this tutorial, however, uses the AngularJS framework. Most of the code from this section was copied, with small changes, from the AngularJS tutorial. 
+> Note: Chrome packaged apps don't enforce any specific framework or programming style. This section and some other parts of this tutorial, however, uses the AngularJS framework. Most of the code from this section was copied, with small changes, from the AngularJS tutorial. 
 
 ## Create a simple view using AngularJS
 
@@ -36,7 +36,7 @@ Note: Chrome packaged apps don't enforce any specific framework or programming s
 
 ## Add a Controller
 
-The previous sample, although interesting, is not exactly useful. Let's transform it into a real Todo list, instead of a simple Todo item. We will create a controller (todo.js) and make some small changes in the index.html:
+The previous sample, although interesting, is not exactly useful. Let's transform it into a real Todo list, instead of a simple Todo item. We will create a controller (controller.js) and make some small changes in the index.html:
 
 1. Add the controller.js file:
     ``` Javascript

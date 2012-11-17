@@ -5,9 +5,9 @@
 
 ## Save your TODOs in the cloud
 
-The sample from Lab 3 uses a static array of TODOs, and every time your app is restarted, the changes are lost. In this section, we will save every change in the Chrome Sync Storage, which is an area where you can storage *small things* that automatically syncs to the cloud if you are online and logged in Chrome. Otherwise, it just saves locally.
+The sample from Lab 3 uses a static array of TODOs, and every time your app is restarted, whatever you've changed is lost. In this section, we will save every change in the Chrome Sync Storage, which is an area where you can storage *small things* that automatically syncs to the cloud if you are online and logged in to Chrome. If you are offline or unlogged, it just saves locally transparently - ie, you don't have to handle this verification in your application.
 
-Note: Chrome Sync Storage is not intended to be used as a generic database. There are several restrictions on the amount of information you can save on it, so it is more appropriate to save settings and other small chunks of data. 
+> Note: Chrome Sync Storage is not intended to be used as a generic database. There are several restrictions on the amount of information you can save on it, so it is more appropriate to save settings and other small chunks of data. 
 
 1. Request permission to use storage in your manifest.json:
     ``` json
