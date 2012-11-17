@@ -24,6 +24,7 @@ The process of uploading apps is simple:
 
 1.  Compress your applications root directory (the folder containing the manifest.json file)
 2.  Visit the [dashboard](https://chrome.google.com/webstore/developer/dashboard) and click "Upload new application".
+    ![Developer Dashboard](https://raw.github.com/Meggin/chrome-apps-appcelerated/master/lab_10_publishing/imgs/developerdashboard.png)
 3.  Find the file in your system.
 4.  Upload.
 
