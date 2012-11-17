@@ -24,12 +24,19 @@ The process of uploading apps is simple:
 
 1.  Compress your applications root directory (the folder containing the manifest.json file)
 2.  Visit the [dashboard](https://chrome.google.com/webstore/developer/dashboard) and click "Upload new application".
+    ![Developer Dashboard](https://raw.github.com/Meggin/chrome-apps-appcelerated/master/lab_10_publishing/imgs/developerdashboard.png)
 3.  Find the file in your system.
+    ![Developer Dashboard Upload](https://raw.github.com/Meggin/chrome-apps-appcelerated/master/lab_10_publishing/imgs/upload.png)
+    ![Developer Dashboard Find](https://raw.github.com/Meggin/chrome-apps-appcelerated/master/lab_10_publishing/imgs/findfile.png)
 4.  Upload.
+
+You should see a screen that looks like this.
+
+![Developer Dashboard Edit](https://raw.github.com/Meggin/chrome-apps-appcelerated/master/lab_10_publishing/imgs/md.png)
 
 Done.... Well not quite, nearly.
 
-Now you need to upload the assets and extra meta information about your application.  These include:
+Now you need to upload the assets and extra meta information about your application before you can publish it to the world.  These include:
 
 *  The icon to display in the store
 *  The detailed description on what your application is, this is the thing that can help entice users to download your app
@@ -40,5 +47,7 @@ Now you need to upload the assets and extra meta information about your applicat
 There are many other fields, but the above items are mandatory.  
 
 If you are happy with everything, you can now publish your application to the public.  If you are not quite ready, that is fine you can save the draft for later, or you can publish it to a group of testers.
+
+![Developer Dashboard Publish](https://raw.github.com/Meggin/chrome-apps-appcelerated/master/lab_10_publishing/imgs/publish.png)
 
 Note: If anyone wants to create a tool that lets users quickly create all the required assets, developers would love you and I will love you long time.
