@@ -1,7 +1,7 @@
 # Manage Data
 
 ## You should also read
-
+[Chrome packaged app - Manage data docs](http://developer.chrome.com/apps/app_storage.html)
 
 ## Save your TODOs in the cloud
 
@@ -11,9 +11,10 @@ Note: Chrome Sync Storage is not intended to be used as a generic database. Ther
 
 1. Request permission to use storage in your manifest.json:
     ``` json
-    [...]
+    {
+      ... ,
       "permissions": ["storage"]
-    [...]
+    }
     ```
 
 2. Change your controller.js and, instead of a static list, get the TODO list from the syncable storage:
@@ -40,19 +41,17 @@ Note: Chrome Sync Storage is not intended to be used as a generic database. Ther
     $scope.save = function() {
       chrome.storage.sync.set({'todolist': $scope.todos});
     };
-
-    [...]
     ```
 
 3. In the HTML, call save() whenever the data changes. There are many other ways of doing this in Angular, like using $watchers on the scope. The one used here makes the save() calls explicit.
     ``` html
-    [...]
+    ...
            [ <a href="" ng-click="archive() || save()">archive</a> ]
-    [...]
+    ...
                 <input type="checkbox" ng-model="todo.done" ng-change="save()">
-    [...]
+    ...
            <form ng-submit="addTodo() || save()">
-    [...]
+    ...
     ```
 
 ## Handle drag-and-dropped files and URLs
@@ -62,7 +61,6 @@ Suppose you want to create TODOs associated with local files and/or URLs. The na
 
 1. In controller.js, add code to handle the events of dragover, dragleave and drop:
     ``` Javascript
-    [...]
     var defaultDropText = "Or drop files here...";
     $scope.dropText = defaultDropText;
 
@@ -119,18 +117,17 @@ Suppose you want to create TODOs associated with local files and/or URLs. The na
     document.body.addEventListener("dragover", dragOver, false);
     document.body.addEventListener("dragleave", dragLeave, false);
     document.body.addEventListener("drop", drop, false);
-    [...]
     ```
 
 2. To make all the area of the window accept the drop event and still work on the same scope, let's move the Angular scope definition from the div to the body in the index.html file. Also, let's associate the body's CSS class with the Angular controller's class, so we can change the class directly in the scope and have it automatically changed in the DOM:
     ``` html
     <body ng-controller="TodoCtrl" ng-class="dropClass">
-    <!-- remember to remove the ng-controller attribute from the div it was before -->
+    <!-- remember to remove the ng-controller attribute from the div where it was before -->
     ```
 
 3. Add a message placeholder to warn the user that some types of dragging are not allowed:
     ``` html
-    <div class="drop-text">
+    <div>
      {{dropText}}
     </div>
     ```
@@ -155,7 +152,8 @@ Suppose you want to create TODOs associated with local files and/or URLs. The na
 
 # Challenge:
 The current code only saves the file reference, but it doesn't open the file. Using the [HTML5 Filesystem API](http://www.html5rocks.com/en/tutorials/file/filesystem/), save the file contents in a sandboxed filesystem. When the TODO item is archived, remove the corresponding file from the sandboxed filesystem. Add an "open" link on each TODO that has an associated file and, when the item is clicked and the file exists in the sandboxed filesystem, use the Chrome packaged app [Filesystem extension](http://developer.chrome.com/apps/fileSystem.html) to request an writable FileEntry from the user and save the file data from the sandboxed filesystem into that entry.
-    > Tip: managing file entries using the raw HTML5 Filesystem API is not trivial. You might want to use a wrapper library, like Eric Bidelman's [filer.js](https://github.com/ebidel/filer.js)
+
+> Tip: managing file entries using the raw HTML5 Filesystem API is not trivial. You might want to use a wrapper library, like Eric Bidelman's [filer.js](https://github.com/ebidel/filer.js)
 
 
 # Takeaways: 
