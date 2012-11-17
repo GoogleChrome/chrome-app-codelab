@@ -25,7 +25,13 @@ You can integrate with Google Services easily by using our enhanced OAuth2 flow.
 
 2.  Start the authentication flow.  We manage the rest.
 
-    chrome.experimental.identity.getAuthToken(function(token) { }) 
+        chrome.experimental.identity.getAuthToken(function(token) { 
+            if(token) {
+                this.accessToken = token;
+                // Store the token
+            }
+              
+        }.bind(this)); 
 
 
 Intergrating with a 3rd Party Service (FourSquare)
