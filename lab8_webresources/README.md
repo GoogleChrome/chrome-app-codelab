@@ -36,7 +36,7 @@ We will change our code to render the content of URLs dropped in the drag-and-dr
     "permissions": ["storage", "webview"]
     ```
 
-3. Set an appropriate width and length to the webview tag in CSS, because it has zero size by default.
+3. Set an appropriate width and height to the webview tag in CSS, because it has zero size by default.
 
 4. Thanks to AngularJS, now we only need to add the `showUri` method to our controller.js and we are done:
     ```js
@@ -45,6 +45,7 @@ We will change our code to render the content of URLs dropped in the drag-and-dr
       webview.src=uri;
     };
 
+Test your modified app. You should be able to click on the "view url" link on any dropped URL TODO item, and the corresponding web page will show in the webview. If it is not showing, inspect the page and check if you set the webview size appropriately.
 
 ## Loading external images
 
@@ -100,6 +101,7 @@ To avoid that, one can use XHR requests, grab the blob corresponding to the remo
         }
       }
     };
+    ```
 
 6. In the controller.js, drop() method, change the handling of URIs to appropriately detect a valid image. For simplicity sake, we only tested for png and jpg extensions. Feel free to have a better coverage in your code.
     ```js
@@ -114,6 +116,7 @@ To avoid that, one can use XHR requests, grab the blob corresponding to the remo
 
     // [...] inside the $apply method, before save(), call the loadImages method:
     $scope.loadImages();
+    ```
 
 7. And, finally, we will change the load method to reset the Blob URLs, since Blob URLs don't span through sessions. Setting TODO's imageUrls to the PLACEHOLDER_IMAGE will force the loadImages method to request them again.
     ```js
