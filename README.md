@@ -33,6 +33,6 @@ Tutorial structure
 * Save and fetch data: [lab5_data](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab5_data#readme)
 * Manage app lifecycle: [lab6_lifecycle](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab6_lifecycle#readme)
 * Access user's data: []()
-* Display links using webview: [lab8_webresources](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab8_webresoures#readme)
+* Accessing resources from the web: [lab8_webresources](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab8_webresources#readme)
 * Create multiple views: []()
 * Publish app in Chrome Web Store: [lab_10_publishing](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab_10_publishing#readme)
