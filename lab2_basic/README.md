@@ -1,6 +1,6 @@
 # Work with code
 
-## Create your first packaged app
+## Create your first Chrome app
 
 
 1. In an empty directory (let's call it &lt;myappdir&gt;), create three files:
@@ -48,14 +48,14 @@
 
 ## Debug, fix, and reload app.
 
->Tip: If you have enabled Developer mode in chrome://extensions, packaged apps can be inspected and debugged by Chrome Developer Tools just like any standard web page:
+>Tip: If you have enabled Developer mode in chrome://extensions, your apps can be inspected and debugged using the Chrome Developer Tools just like any standard web page:
 >
 >* Right-click on page, select Inspect Element.
 >
 >* For the background page which doesn't have UI, you can go to chrome://extensions and click on Inspect Views...
 
 
-1. Change the text "Hello world" to "My first packaged app" in index.html.
+1. Change the text "Hello world" to "My first app" in index.html.
 
 1. Change the main.js background page to create two windows instead of one. Don't bother to create another html. For now, you can open index.html on both.
 
@@ -63,6 +63,6 @@
 
 # Takeaways
 
-* Packaged apps have three basic pieces. The first and foremost is the manifest.json, which describes your app, requests special permissions, defines important meta information and much more. The second part is the background page, which contains all logic not tied to a specific user interface. The last part is the user interface: HTML, CSS, JavaScripts related to the interface, images, etc.
-* Packaged apps can be debugged just like standard web pages using the Chrome Developer Tools. But since an app doesn't have the Reload control of a browser, a Reload App option has been added when you run in Developer mode.
+* Chrome apps have three basic pieces. The first and foremost is the manifest.json, which describes your app, requests special permissions, defines important meta information and much more. The second part is the background page, which contains all logic not tied to a specific user interface. The last part is the user interface: HTML, CSS, JavaScripts related to the interface, images, etc.
+* Chrome apps can be debugged just like standard web pages using the Chrome Developer Tools. But since an app doesn't have the Reload control of a browser, a Reload App option has been added when you run in Developer mode.
 
