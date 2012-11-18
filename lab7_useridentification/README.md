@@ -14,26 +14,26 @@ You can integrate with Google Services easily by using our enhanced OAuth2 flow.
 > Warning: Currently, this feature is only available for whitelisted apps and need to be enabled by a team in the US, so you might want to skip this for now.
 
 1.  Add an oauth2 configuration to your manifest. The oauth2 scope defines the Google services that you want to interact with. The user will be prompted, at install time, about the services you intend to interact with. The oauth2 client ID is obtained from the [Google Developer console](http://developer.google.com/console).
-        ```json
-        {
-            ...,
-            "oauth2": {
-                "client_id": "yourappnumber.apps.googleusercontent.com",
-                "scopes": ["https://www.googleapis.com/auth/userinfo.profile"]
-            }
+    ``` js
+    {
+        ...,
+        "oauth2": {
+            "client_id": "yourappnumber.apps.googleusercontent.com",
+            "scopes": ["https://www.googleapis.com/auth/userinfo.profile"]
         }
-        ```
+    }
+    ```
 
 2.  Start the authentication flow. We manage the rest.
-        ```js
-        chrome.experimental.identity.getAuthToken(function(token) { 
-            if (token) {
-                this.accessToken = token;
-                // Store the token
-            }
-              
-        }.bind(this)); 
-        ```
+    ```js
+    chrome.experimental.identity.getAuthToken(function(token) { 
+        if (token) {
+            this.accessToken = token;
+            // Store the token
+        }
+          
+    }.bind(this)); 
+    ```
 
 ## Integrating with a 3rd Party Service (FourSquare)
 
@@ -47,112 +47,112 @@ When running the app unpacked, your app will normally have a different ID depend
 
 
 So, this will result in the auth API not working, since the redirect URL varies. To force the unpacked app to always have the same ID, add a `key` to your manifest.json. Since we will be accessing Foursquare API, we also need to request the appropriate permission:
-    ```json
-    {
-        ...,
-        "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDnyZBBnfu+qNi1x5C0YKIob4ACrA84HdMArTGobttMHIxM2Z6aLshFmoKZa/pbyQS6D5yNywr4KM/llWiY2aV2puIflUxRT8SjjPehswCvm6eWQM+r3mB755m48x+diDl8URJsX4AJ3pQHnKWEvitZcuBh0GTfsLzKU/BfHEaH7QIDAQAB",
-        "permissions": ["https://foursquare.com/*"]
-    }
-    ```
+```json
+{
+    ...,
+    "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDnyZBBnfu+qNi1x5C0YKIob4ACrA84HdMArTGobttMHIxM2Z6aLshFmoKZa/pbyQS6D5yNywr4KM/llWiY2aV2puIflUxRT8SjjPehswCvm6eWQM+r3mB755m48x+diDl8URJsX4AJ3pQHnKWEvitZcuBh0GTfsLzKU/BfHEaH7QIDAQAB",
+    "permissions": ["https://foursquare.com/*"]
+}
+```
 
 This key is a base64 encoded version of the app's public key. Remember, this key MUST be removed before uploading it to the store.
 
 Now let's get into the nitty gritty. Create a file called `foursquare.js` in your application and add the following code:
-    ```js
-     var foursquare = {};
+```js
+ var foursquare = {};
 
-     (function(api) {
-         // See "Pure AJAX application" from
-         // https://developer.foursquare.com/overview/auth
-         var ACCESS_TOKEN_PREFIX = '#access_token=';
+ (function(api) {
+     // See "Pure AJAX application" from
+     // https://developer.foursquare.com/overview/auth
+     var ACCESS_TOKEN_PREFIX = '#access_token=';
 
-         var storage = chrome.storage.local;
-         var ACCESS_TOKEN_STORAGE_KEY = 'foursquare-access-token';
+     var storage = chrome.storage.local;
+     var ACCESS_TOKEN_STORAGE_KEY = 'foursquare-access-token';
 
-         var getAccessToken = function(callback) {
-         storage.get(ACCESS_TOKEN_STORAGE_KEY, function(items) {
-             callback(items[ACCESS_TOKEN_STORAGE_KEY]);
-             });
-         }
+     var getAccessToken = function(callback) {
+     storage.get(ACCESS_TOKEN_STORAGE_KEY, function(items) {
+         callback(items[ACCESS_TOKEN_STORAGE_KEY]);
+         });
+     }
 
-         var setAccessToken = function(accessToken, callback) {
-             var items = {};
-             items[ACCESS_TOKEN_STORAGE_KEY] = accessToken;
-             storage.set(items, callback);
-         }
+     var setAccessToken = function(accessToken, callback) {
+         var items = {};
+         items[ACCESS_TOKEN_STORAGE_KEY] = accessToken;
+         storage.set(items, callback);
+     }
 
-         var clearAccessToken = function(callback) {
-             storage.remove(ACCESS_TOKEN_STORAGE_KEY, callback);
-         }
+     var clearAccessToken = function(callback) {
+         storage.remove(ACCESS_TOKEN_STORAGE_KEY, callback);
+     }
 
-         // Tokens state is not exposed via the API
-         api.isSignedIn = function(callback) {
-             getAccessToken(function(accessToken) {
-                 callback(!!accessToken);
-             });
-         };  
-   
-         api.signIn = function(appId, clientId, successCallback, errorCallback) {
-             var redirectUrl = 'https://' + appId + '.chromiumapp.org/';
-             var authUrl = 'https://foursquare.com/oauth2/authorize?' +
-                 'client_id=' + clientId + '&' +
-                 'response_type=token&' +
-                 'redirect_uri=' + encodeURIComponent(redirectUrl);
-         
-             chrome.experimental.identity.launchWebAuthFlow(
-                 {url: authUrl},
-                 function(responseUrl) {
-                     if (chrome.extension.lastError) {
-                         errorCallback(chrome.extension.lastError.message);
-                         return;
-                     }
+     // Tokens state is not exposed via the API
+     api.isSignedIn = function(callback) {
+         getAccessToken(function(accessToken) {
+             callback(!!accessToken);
+         });
+     };  
 
-                     var accessTokenStart = responseUrl.indexOf(ACCESS_TOKEN_PREFIX);
-
-                     if (!accessTokenStart) {
-                         errorCallback('Unexpected responseUrl: ' + responseUrl);
-                         return;
-                     }
-
-                     var accessToken = responseUrl.substring(
-                     accessTokenStart + ACCESS_TOKEN_PREFIX.length);
-
-                     setAccessToken(accessToken, successCallback);
-                 }
-             );
-        };
-
-        api.signOut = function(callback) {
-          clearAccessToken(callback);
-        };
-
-        var apiMethod = function( path, postData, params, successCallback, errorCallback) {
-             getAccessToken(function(accessToken) {
-                 var xhr = new XMLHttpRequest();
-                 xhr.onload = function() {
-                    successCallback(JSON.parse(xhr.responseText).response);
-                 }
-                 xhr.onerror = function() {
-                    errorCallback(xhr.status, xhr.statusText, JSON.parse(xhr.responseText));
+     api.signIn = function(appId, clientId, successCallback, errorCallback) {
+         var redirectUrl = 'https://' + appId + '.chromiumapp.org/';
+         var authUrl = 'https://foursquare.com/oauth2/authorize?' +
+             'client_id=' + clientId + '&' +
+             'response_type=token&' +
+             'redirect_uri=' + encodeURIComponent(redirectUrl);
+     
+         chrome.experimental.identity.launchWebAuthFlow(
+             {url: authUrl},
+             function(responseUrl) {
+                 if (chrome.extension.lastError) {
+                     errorCallback(chrome.extension.lastError.message);
+                     return;
                  }
 
-                 var encodedParams = [];
-                 for (var paramName in params) {
-                     encodedParams.push(encodeURIComponent(paramName) + '=' +
-                     encodeURIComponent(params[paramName]));
-                 }
-                 xhr.open(
-                     'GET',
-                     'https://api.foursquare.com/v2/' + path + '?oauth_token=' +
-                     encodeURIComponent(accessToken) + '&' + encodedParams.join('&'),
-                     true);
-                 xhr.send(null);
-             });
-        }
+                 var accessTokenStart = responseUrl.indexOf(ACCESS_TOKEN_PREFIX);
 
-        api.getRecentCheckins = apiMethod.bind(api, 'checkins/recent', undefined);
-    })(foursquare);
-    ```
+                 if (!accessTokenStart) {
+                     errorCallback('Unexpected responseUrl: ' + responseUrl);
+                     return;
+                 }
+
+                 var accessToken = responseUrl.substring(
+                 accessTokenStart + ACCESS_TOKEN_PREFIX.length);
+
+                 setAccessToken(accessToken, successCallback);
+             }
+         );
+    };
+
+    api.signOut = function(callback) {
+      clearAccessToken(callback);
+    };
+
+    var apiMethod = function( path, postData, params, successCallback, errorCallback) {
+         getAccessToken(function(accessToken) {
+             var xhr = new XMLHttpRequest();
+             xhr.onload = function() {
+                successCallback(JSON.parse(xhr.responseText).response);
+             }
+             xhr.onerror = function() {
+                errorCallback(xhr.status, xhr.statusText, JSON.parse(xhr.responseText));
+             }
+
+             var encodedParams = [];
+             for (var paramName in params) {
+                 encodedParams.push(encodeURIComponent(paramName) + '=' +
+                 encodeURIComponent(params[paramName]));
+             }
+             xhr.open(
+                 'GET',
+                 'https://api.foursquare.com/v2/' + path + '?oauth_token=' +
+                 encodeURIComponent(accessToken) + '&' + encodedParams.join('&'),
+                 true);
+             xhr.send(null);
+         });
+    }
+
+    api.getRecentCheckins = apiMethod.bind(api, 'checkins/recent', undefined);
+})(foursquare);
+```
 
 ## Under the hood
 
@@ -166,17 +166,17 @@ So in your `TODO` Javascript file, we need to hook up the API.
 
 Lets create a button for Sign-in.
     
-    ```html
-    <button id="signing">Sign-in</button>
-    ```
+```html
+<button id="signing">Sign-in</button>
+```
 
 Now we need to make this button do something.  Luckily Angular lets us do some cool stuff here, all we need to do is add items to the model that contains todos.
 
-    ```js
-    var onSuccess = function(data) { };
-    var onError = function(data) { };
-    foursquare.getRecentCheckins(onSuccess, onError);
-    ```
+```js
+var onSuccess = function(data) { };
+var onError = function(data) { };
+foursquare.getRecentCheckins(onSuccess, onError);
+```
 
 We will leave it up to the reader to make sure that every time the app is loaded, the new data is fetched. (hint: chrome.app.runtime.onLaunched event).
 
