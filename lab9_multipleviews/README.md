@@ -17,11 +17,12 @@ Unlike standard web apps, a Chrome packaged app has complete control of its wind
       </body>
     </html>    
     ```
+
 2. Move all drop-related functionality from controller.js to a new file, droparea.js:
     ```js
     function DropCtrl($scope) {
-      // move to here the properties defaultDropText and $scope.dropText
-      // move to here the methods dragOver, dragLeave and drop
+      // move here the variable initializations for defaultDropText and $scope.dropText
+      // move here the methods dragOver, dragLeave and drop
     }
     ```
 
