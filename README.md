@@ -6,9 +6,9 @@ like the ability to interact with network and hardware devices, media tools, and
 
 Help us make Chrome Apps better!
 --------------------------------
-Chrome apps are still in developer preview-- we know they aren't perfect. But we're trying to do something new here, bridging together the native and web experience, giving developers choice, and users the best experience possible.
+Chrome apps are still in developer preview-- we know they aren't perfect. But we're trying to do something new here, bridging together the native and web experience, giving developers choice and users the best experience possible.
 
-For Chrome apps to succeed, we need and want your feedback, we don't want you to have to go in circles to provide it.
+For Chrome apps to succeed, we need and want your feedback and we don't want you to have to go in circles to provide it.
 Here's a [very simple feedback form](https://docs.google.com/a/google.com/forms/d/1x3309vpp-KTiHqZWOCQhjVrIWxkm0wEBp2IWMG2ywbU/viewform?id=1x3309vpp-KTiHqZWOCQhjVrIWxkm0wEBp2IWMG2ywbU).
 
 Learn more about Chrome Apps
@@ -29,10 +29,10 @@ Tutorial structure
 * Set up development environment: [lab1_setup](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab1_setup#readme)
 * Create basic app: [lab2_basic](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab2_basic#readme)
 * Create model-view-controller: [lab3_mvc](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab3_mvc#readme)
-* Test app \*\*\*Work-in-progress: [lab4_testing](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab4_testing#readme)
+* Test app \*\*Work-in-progress\*\*: [lab4_testing](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab4_testing#readme)
 * Save and fetch data: [lab5_data](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab5_data#readme)
 * Manage app lifecycle: [lab6_lifecycle](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab6_lifecycle#readme)
 * Access user's data: [lab7_useridentification](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab7_useridentification#readme)
-* Accessing resources from the web: [lab8_webresources](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab8_webresources#readme)
+* Access resources from the web: [lab8_webresources](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab8_webresources#readme)
 * Create multiple views: [lab9_multipleviews](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab9_multipleviews#readme)
 * Publish app in Chrome Web Store: [lab_10_publishing](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab_10_publishing#readme)
