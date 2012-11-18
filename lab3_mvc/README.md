@@ -2,15 +2,15 @@
 
 ## You should also read
 
-* [AngularJS in Chrome packaged app](http://developer.chrome.com/apps/angular_framework.html) tutorial
+* [Build Apps with AngularJS](http://developer.chrome.com/apps/angular_framework.html) tutorial
 
-* [AngularJS](http://angularjs.org/) tutorial
+* [AngularJS Todo](http://angularjs.org/) tutorial
 
-> Note: Chrome packaged apps don't enforce any specific framework or programming style. This section and some other parts of this tutorial, however, uses the AngularJS framework. Most of the code from this section was copied, with small changes, from the AngularJS tutorial. 
+> Note: Chrome packaged apps don't enforce any specific framework or programming style. This section and additional parts of this tutorial use the AngularJS framework. Most of the code from this section was copied, with small changes, from the AngularJS Todo tutorial. 
 
 ## Create a simple view using AngularJS
 
-1. Download the [Angular script](http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js)
+1. Download the [Angular script](http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js).
 
 1. Change your index.html to use a simple Angular sample:
     ```html
