@@ -7,6 +7,6 @@
       "scripts": ["main.js"]
     }
   },
-  "permissions": ["storage", "webview", "http://*/", "https://*/"]
+  "permissions": ["storage", "webview", "<all_urls>"]
 }
 
