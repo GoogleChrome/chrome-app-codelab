@@ -1,5 +1,7 @@
 # Lifecycle
 
+Like everything in this world, Apps have a lifecycle.  They are installed, launched, restarted, suspended when the system needs to free up resources and uninstalled.  This lab will show you the basics of the lifecycle of a Chrome app and how its heart (the event page) is used.
+
 ## You should also read
 [Manage App Lifecycle](http://developer.chrome.com/apps/app_lifecycle.html) in Chrome app docs
 
