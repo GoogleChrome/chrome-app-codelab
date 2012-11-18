@@ -52,7 +52,7 @@ Test your modified app. You should be able to click on the "view url" link on an
 If you try to add an `<img>` tag to your index.html, and point its `src` attribute to any site on the web, the following exception is thrown in the console and the image isn't loaded:
 > Refused to load the image 'http://angularjs.org/img/AngularJS-large.png' because it violates the following Content Security Policy directive: "img-src 'self' data: chrome-extension-resource:".
 
-Chrome apps cannot load any external resource directly in the DOM, because of [the CSP restrictions](http://developer.chrome.com/apps/app_csp.html).
+Chrome apps cannot load any external resource directly in the DOM, because of the [CSP restrictions](http://developer.chrome.com/apps/app_csp.html).
 
 To avoid this restriction, you can use XHR requests, grab the blob corresponding to the remote file and use it appropriately. For example, `<img>` tags can use a blob URL. Let's change our application to show a small icon in the TODO list if the dropped URL represents an image:
 
