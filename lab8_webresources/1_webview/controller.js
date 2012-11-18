@@ -84,7 +84,11 @@ function TodoCtrl($scope) {
   };
 
   $scope.addTodo = function() {
-    $scope.todos.push({text:$scope.todoText, done:false});
+    var todo = {text:$scope.todoText, done:false};
+    if(/http:\/\/|https:\/\//.test($scope.todoText)) {
+      todo.uri = $scope.todoText;
+    }
+    $scope.todos.push(todo);
     $scope.todoText = '';
   };
 
