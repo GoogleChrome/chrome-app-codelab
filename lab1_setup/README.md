@@ -4,7 +4,7 @@
 
 * [Chrome Canary on Mac and Windows](https://tools.google.com/dlpage/chromesxs) and [Chromium Dev on Linux](http://www.chromium.org/getting-involved/dev-channel#TOC-Linux)
 
-* Your preferred text editor, we have an under development [Chrome apps plugin](http://chrome-api.storage.googleapis.com/index.html) for [Sublime](http://www.sublimetext.com)
+* Your preferred text editor. We have an under-development [Chrome apps plugin](http://chrome-api.storage.googleapis.com/index.html) for [Sublime](http://www.sublimetext.com).
 
 ## Set up Chrome
 
@@ -26,5 +26,5 @@ If you don't have it yet, [install git](https://help.github.com/articles/set-up-
     git clone https://github.com/GoogleChrome/chrome-apps-appcelerated-tutorial
 ```
 
-Note: for the rest of this tutorial, we will refer to the directory you've cloned the git repository above as &lt;tutorial&gt;
+Note: for the rest of this tutorial, we'll refer to the directory for the cloned git repository as &lt;tutorial&gt;.
 
