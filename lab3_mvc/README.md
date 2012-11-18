@@ -6,7 +6,7 @@
 
 * [AngularJS Todo](http://angularjs.org/) tutorial
 
-> Note: Chrome packaged apps don't enforce any specific framework or programming style. This section and additional parts of this tutorial use the AngularJS framework. Most of the code from this section was copied, with small changes, from the AngularJS Todo tutorial. 
+> Note: Chrome apps don't enforce any specific framework or programming style. This section and additional parts of this tutorial use the AngularJS framework. Most of the code from this section was copied, with small changes, from the AngularJS Todo tutorial. 
 
 ## Create a simple view using AngularJS
 
@@ -101,9 +101,9 @@ Note how the data, stored in an array inside the controller, binds to the view a
 
 # Takeaways: 
 
-* Packaged apps are offline first, so the recommended way to include third-party scripts is to download and package them inside your app.
+* Chrome apps are offline first, so the recommended way to include third-party scripts is to download and package them inside your app.
 
-* You can use any framework you want, as long as it complies with Content Security Policies and other restrictions that Chrome packaged apps are enforced to follow.
+* You can use any framework you want, as long as it complies with Content Security Policies and other restrictions that Chrome apps are enforced to follow.
 
 * MVC frameworks make your life easier. Use them, specially if you want to build a non-trivial application.
 
