@@ -2,6 +2,9 @@
 
 ## Create your first Chrome app
 
+There are three core pieces to any Chrome app: The manifest, that descibes meta-information about your applicaiton - name, description, version number and how to launch your app; The background script - which sets up how your application responds to system events such as: the user installing your app, the user launching your app and the system suspending your app; and finally the view (which is optional, but you normally need to show the user something)
+
+Lets look at each of these components at there simplest level. 
 
 1. In an empty directory (let's call it &lt;myappdir&gt;), create three files:
     * Manifest: manifest.json
