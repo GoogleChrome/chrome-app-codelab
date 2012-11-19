@@ -1,6 +1,6 @@
 # Lab 6 - Lifecycle
 
-Like everything in this world, Apps have a lifecycle.  They are installed, launched, restarted, suspended when the system needs to free up resources and uninstalled.  This lab will show you the basics of the lifecycle of a Chrome app and how its heart (the event page) is used.
+Like everything in this world, apps have a lifecycle.  They are installed, launched, restarted, suspended when the system needs to free up resources and uninstalled.  This lab will show you the basics of the Chrome app lifecycle and how its heart, the event page (aka background script), is used.
 
 ## You should also read
 [Manage App Lifecycle](http://developer.chrome.com/apps/app_lifecycle.html) in Chrome app docs
@@ -13,7 +13,7 @@ For simpler apps, the event page listens to the app lifecycle events and reacts 
 
 ## The onLaunched event and the chrome.app.window.create method
 
-onLaunched is the most important event. It fires when the user clicks on your app's icon, with the intent of launching it. For most simpler apps, the event page will listen for this event and open a window when it fires. See our `main.js` for the most common usage.
+onLaunched is the most important event. It fires when the user clicks on your app's icon with the intent of launching it. For most simpler apps, the event page will listen for this event and open a window when it fires. See our `main.js` for the most common usage.
 
 ### Windows with IDs
 
