@@ -1,6 +1,8 @@
 # Lab 9 - Multiple Views
 
-Unlike standard web apps, a Chrome packaged app has complete control of its windows. It can create any number of windows at arbitrary screen locations, control the window's look and feel, minimize, maximize and many more. In this lab, we will only move the Drop are of our current application to another window. You will see with this code that windows can talk to each other and to the background page directly, synchronously, because they are all in the same thread.
+Unlike standard web apps, a Chrome app has complete control of its windows. It can create any number of windows at arbitrary screen locations, control the window's look and feel, minimize, maximize and much more.
+
+In this lab, we will move the Drop area of our current application to another window. Here you can see how windows talk to each other and to the event page directly, synchronously, because they are all in the same thread.
 
 1. Let's adapt our code then. Start by removing the droptext `<div>` from index.html and creating a new HTML with the drop area:
     ```html
@@ -39,4 +41,4 @@ And that's all. Thanks to the hierarchical scope support on Angular, the DropCtr
 
 # Takeaway:
 
-* Web developers usually have a mindset of one-window-per-webapp. However, the Chrome packaged app platform opens more possibilities for your creativity. A document editor, for example, can have one window per open document, a more natural metaphor for apps that looks like native.
+* Web developers usually have a mindset of one-window-per-webapp. The Chrome app platform opens more possibilities for your creativity. A document editor, for example, can have one window per opened document, a more natural metaphor for native-like apps.
