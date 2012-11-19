@@ -70,6 +70,6 @@ Lets look at each of these components at their simplest level.
 
 # Takeaways
 
-* Chrome apps have three basic pieces. The first and foremost is the manifest.json, which describes your app, requests special permissions, defines important meta information and much more. The second part is the background sript, which contains all logic not tied to a specific user interface. The last part is the user interface: HTML, CSS, JavaScripts related to the interface, images, etc.
+* Chrome apps have three basic pieces. The first and foremost is the manifest.json, which describes your app, requests special permissions, defines important meta information and much more. The second part is the background script, which contains all logic not tied to a specific user interface. The last part is the user interface: HTML, CSS, JavaScripts related to the interface, images, etc.
 * Chrome apps can be debugged just like standard web pages using the Chrome Developer Tools. But since an app doesn't have the Reload control of a browser, a Reload App option has been added when you run in Developer mode.
 
