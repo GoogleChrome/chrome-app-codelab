@@ -23,7 +23,7 @@
 If you don't have it yet, [install git](https://help.github.com/articles/set-up-git) and run 
 
 ```
-    git clone https://github.com/GoogleChrome/chrome-apps-appcelerated
+    git clone git://github.com/Meggin/chrome-apps-appcelerated.git
 ```
 
 Note: for the rest of this tutorial, we'll refer to the directory for the cloned git repository as &lt;tutorial&gt;.
