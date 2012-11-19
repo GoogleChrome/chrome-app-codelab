@@ -1,4 +1,4 @@
-# Lifecycle
+# Lab 6 - Lifecycle
 
 Like everything in this world, Apps have a lifecycle.  They are installed, launched, restarted, suspended when the system needs to free up resources and uninstalled.  This lab will show you the basics of the lifecycle of a Chrome app and how its heart (the event page) is used.
 

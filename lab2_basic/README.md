@@ -1,4 +1,4 @@
-# Work with code
+# Lab 2 - Work with code
 
 ## Create your first Chrome app
 

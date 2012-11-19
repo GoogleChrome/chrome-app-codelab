@@ -1,4 +1,4 @@
-# Multiple Views
+# Lab 9 - Multiple Views
 
 Unlike standard web apps, a Chrome packaged app has complete control of its windows. It can create any number of windows at arbitrary screen locations, control the window's look and feel, minimize, maximize and many more. In this lab, we will only move the Drop are of our current application to another window. You will see with this code that windows can talk to each other and to the background page directly, synchronously, because they are all in the same thread.
 

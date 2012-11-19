@@ -1,4 +1,12 @@
-# Model-View-Controller
+# Lab 3 - Model-View-Controller
+
+Whenever your application grows beyond a single script with a few dozen lines, it gets
+harder and harder to keep sanity without a good separation of roles among app components. One of the most common
+models for structuring a complex application, no matter what language, is the Model-View-Controller (MVC) and
+its variants, like Model-View-Presentation (MVP).
+
+There are several frameworks to help apply MVC concepts to a Javascript application, and most of them,
+as long as they are CSP compliant, can be used in a Chrome App. We will use the [AngularJS](http://angularjs.org/) framework in parts of this tutorial, in special in this section.
 
 ## You should also read
 

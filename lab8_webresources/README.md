@@ -1,12 +1,12 @@
-# Web Resources
-
-## You should also read
-
-* [Embed Content](http://developer.chrome.com/apps/app_external.html) in Chrome app docs
+# Lab 8 - Web Resources
 
 Chrome apps have a strict Content Security Policy which will not let the user execute code or load resources that are hosted remotely.
 
 Many applications, however, need to be able to load and display content from a remote location. A News Reader, for example, needs to display remote content inline or load and show images from a remote URL.
+
+## You should also read
+
+* [Embed Content](http://developer.chrome.com/apps/app_external.html) in Chrome app docs
 
 ## Loading external web content into an element
 

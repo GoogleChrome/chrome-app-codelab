@@ -1,11 +1,11 @@
-# Manage Data
+# Lab 5 - Manage Data
+
+The sample from Lab 3 uses a static array of TODOs. Every time your app restarts, whatever you've changed is lost. In this section, we will save every change using [chrome.storage.sync](http://developer.chrome.com/trunk/apps/storage.html). This lets you store *small things* that automatically sync to the cloud if you are online and logged in to Chrome. If you are offline or unlogged, it saves locally and transparently: you don't have to handle online check and offline fallback in your application.
 
 ## You should also read
 [Manage Data](http://developer.chrome.com/apps/app_storage.html) in Chrome app docs
 
 ## Save your TODOs in the cloud
-
-The sample from Lab 3 uses a static array of TODOs. Every time your app restarts, whatever you've changed is lost. In this section, we will save every change using [chrome.storage.sync](http://developer.chrome.com/trunk/apps/storage.html). This lets you store *small things* that automatically sync to the cloud if you are online and logged in to Chrome. If you are offline or unlogged, it saves locally and transparently: you don't have to handle the verification in your application.
 
 > Note: Chrome Sync Storage is not intended to be used as a generic database. There are several restrictions on the amount of information you can save, so it is more appropriate to save settings and other small chunks of data. 
 

@@ -1,4 +1,4 @@
-# Set up development environment
+# Lab 1 - Set up development environment
 
 ## Dependencies and prerequisites
 

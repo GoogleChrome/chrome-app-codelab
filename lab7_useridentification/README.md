@@ -1,20 +1,19 @@
-# User Identity
-
-## You should also read
-[Identify User](http://developer.chrome.com/trunk/apps/app_identity.html) in Chrome app docs
-
-## Authentication
+# Lab 7 - User Identity
 
 Most modern applications are attached to the web to synchronize data. When synchronizing data, you need to identify who the user is. Chrome apps come with an [identity API](http://developer.chrome.com/trunk/apps/experimental.identity.html) that makes it easy to integrate either with Google accounts or with any other service that supports OAuth.
 
 1.  Built in - Google Authenticiation
 2.  Third Party Authentication (Twitter, Foursquare, etc.)
 
-> Note: Apps with authentication require the experimental permission in the manifest.json and cannot be uploaded to the Chrome Web Store. If you prefer, you can choose to skip this lab.
+## You should also read
+[Identify User](http://developer.chrome.com/trunk/apps/app_identity.html) in Chrome app docs
 
-## Integrating with Google
 
-You can integrate with Google Services easily by using our enhanced OAuth2 flow.  
+> Note: Apps with authentication require the experimental permission in the manifest.json and, until they came out of experimental state, they cannot be uploaded to the Chrome Web Store. If you prefer, you can choose to skip this lab.
+
+## Authenticating with Google
+
+You can integrate with Google services easily by using our enhanced OAuth2 flow.  
 
 > Warning: Currently, this feature is only available to whitelisted apps which need to be enabled by a team in the US, so you might want to skip this for now.
 
