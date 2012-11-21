@@ -26,13 +26,13 @@ keeping the sample simple and straightforward.
 
 Tutorial structure
 ------------------
-* Set up development environment: [lab1_setup](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab1_setup#readme)
-* Create basic app: [lab2_basic](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab2_basic#readme)
-* Create model-view-controller: [lab3_mvc](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab3_mvc#readme)
-* Test app \*\*Work-in-progress\*\*: [lab4_testing](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab4_testing#readme)
-* Save and fetch data: [lab5_data](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab5_data#readme)
-* Manage app lifecycle: [lab6_lifecycle](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab6_lifecycle#readme)
-* Access user's data: [lab7_useridentification](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab7_useridentification#readme)
-* Access resources from the web: [lab8_webresources](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab8_webresources#readme)
-* Create multiple views: [lab9_multipleviews](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab9_multipleviews#readme)
-* Publish app in Chrome Web Store: [lab_10_publishing](https://github.com/Meggin/chrome-apps-appcelerated/tree/master/lab_10_publishing#readme)
+* Set up development environment: [lab1_setup](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab1_setup#readme)
+* Create basic app: [lab2_basic](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab2_basic#readme)
+* Create model-view-controller: [lab3_mvc](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab3_mvc#readme)
+* Test app \*\*Work-in-progress\*\*: [lab4_testing](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab4_testing#readme)
+* Save and fetch data: [lab5_data](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab5_data#readme)
+* Manage app lifecycle: [lab6_lifecycle](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab6_lifecycle#readme)
+* Access user's data: [lab7_useridentification](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab7_useridentification#readme)
+* Access resources from the web: [lab8_webresources](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab8_webresources#readme)
+* Create multiple views: [lab9_multipleviews](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab9_multipleviews#readme)
+* Publish app in Chrome Web Store: [lab_10_publishing](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab_10_publishing#readme)

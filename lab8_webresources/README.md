@@ -61,7 +61,7 @@ To avoid this restriction, you can use XHR requests, grab the blob corresponding
     "permissions": ["storage", "webview", "<all_urls>"]
     ```
 
-2. Add to your project a placeholder image ![loading.gif](https://github.com/Meggin/chrome-apps-appcelerated/raw/master/lab8_webresources/2_loading_resources/loading.gif) that will be shown while we are loading the proper image.
+2. Add to your project a placeholder image ![loading.gif](https://github.com/GoogleChrome/chrome-app-codelab/raw/master/lab8_webresources/2_loading_resources/loading.gif) that will be shown while we are loading the proper image.
 
 3. Add the `<img>` tag to the TODO item on the index.html:
     ```html
