@@ -42,6 +42,8 @@ as long as they are CSP compliant, can be used in a Chrome App. We will use the 
     </html>
     ```
 
+1. Check the results by [reloading the app](http://developer.chrome.com/trunk/apps/publish_app.html).
+
 ## Add a Controller
 
 The previous sample, although interesting, is not exactly useful. Let's transform it into a real Todo list, instead of a simple Todo item. We will create a controller (controller.js) and make some small changes in the index.html:
@@ -104,6 +106,8 @@ The previous sample, although interesting, is not exactly useful. Let's transfor
       </body>
     </html>
     ```
+
+1. Check the results by [reloading the app](http://developer.chrome.com/trunk/apps/publish_app.html).
 
 Note how the data, stored in an array inside the controller, binds to the view and is automatically updated when it is changed by the controller.
 
