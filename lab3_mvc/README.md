@@ -44,6 +44,8 @@ as long as they are CSP compliant, can be used in a Chrome App. We will use the 
 
 1. Check the results by [reloading the app](http://developer.chrome.com/trunk/apps/publish_app.html).
 
+> Note:The ng-csp directive tells Angular to run in a "content security mode". You don't need this directive when using Angular v1.1.0+, as csp mode just works, out of the box.
+
 ## Add a Controller
 
 The previous sample, although interesting, is not exactly useful. Let's transform it into a real Todo list, instead of a simple Todo item. We will create a controller (controller.js) and make some small changes in the index.html:
