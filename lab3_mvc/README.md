@@ -44,7 +44,7 @@ as long as they are CSP compliant, can be used in a Chrome App. We will use the 
 
 1. Check the results by [reloading the app](http://developer.chrome.com/trunk/apps/publish_app.html).
 
-> Note:The ng-csp directive tells Angular to run in a "content security mode". You don't need this directive when using Angular v1.1.0+, as csp mode just works, out of the box.
+> Note: The ng-csp directive tells Angular to run in a "content security mode". You don't need this directive when using Angular v1.1.0+. We've included it here so that the sample works regardless of the Angular version in use.
 
 ## Add a Controller
 
