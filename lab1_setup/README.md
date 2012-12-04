@@ -31,3 +31,6 @@ If you don't have it yet, [install git](https://help.github.com/articles/set-up-
 
 Note: for the rest of this tutorial, we'll refer to the directory for the cloned git repository as &lt;tutorial&gt;.
 
+## What's next?
+
+In [lab2_basic](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab2_basic), you will create your first Chrome app!
