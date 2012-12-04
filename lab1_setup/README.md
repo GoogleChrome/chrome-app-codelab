@@ -18,6 +18,9 @@
 1. Enable Developer mode in `chrome://extensions`:<br>
 ![Enabling developer mode](https://raw.github.com/GoogleChrome/chrome-app-codelab/master/lab1_setup/imgs/screenshot2.png)
 
+> Note: Open the `chrome://extensions` page in it's own window and keep it assessible as you work through the lab.
+You will use this page quite a bit to load and reload the Todo app.
+
 ## Set up workspace
 
 If you don't have it yet, [install git](https://help.github.com/articles/set-up-git) and run 
