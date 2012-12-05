@@ -1,6 +1,6 @@
 # Lab 8 - Web Resources
 
-Chrome apps have a strict Content Security Policy which will not let the user execute code or load resources that are hosted remotely.
+Chrome apps have a strict [Content Security Policy](http://developer.chrome.com/trunk/apps/app_csp.html) which will not let the user execute code or load resources that are hosted remotely.
 
 Many applications, however, need to be able to load and display content from a remote location. A News Reader, for example, needs to display remote content inline or load and show images from a remote URL.
 
@@ -12,7 +12,8 @@ Many applications, however, need to be able to load and display content from a r
 
 Sites on the internet are inherently a security risk and rendering arbitrary web pages directly into your application with elevated privileges would be a potential source of exploits.
 
-Chrome apps offer developers the ability to securely render third-party content in the `<webview>` tag. A WebView is like an iframe that you can control with greater flexibility and added security. It runs in a separate sandboxed process and can't communicate directly with the application.
+Chrome apps offer developers the ability to securely render third-party content in the `<webview>` tag. A WebView is like an iframe that you can control with greater flexibility and added security.
+It runs in a separate sandboxed process and can't communicate directly with the application.
 
 > Tip: The WebView has a very simple API.  From your app you can:
 > 
@@ -22,7 +23,12 @@ Chrome apps offer developers the ability to securely render third-party content 
 
 We will change our code to render the content of URLs dropped in the drag-and-drop operations in a WebView when the user clicks on a link.
 
-1. Start by adding a WebView tag and a link to index.html:
+1. Request a new permission, "webview", in [manifest.json](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/1_webview/manifest.json):
+    ```json
+    "permissions": ["storage", "webview"]
+    ```
+
+2. Add a WebView tag and a link to [index.html](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/1_webview/index.html):
     ```html
     <!-- in TODO item -->
     <a ng-show="todo.uri" href="" ng-click="showUri(todo.uri)">(view url)</a>
@@ -31,21 +37,26 @@ We will change our code to render the content of URLs dropped in the drag-and-dr
     <webview></webview>
     ```
 
-2. Request a new permission, "webview", in manifest.json:
-    ```json
-    "permissions": ["storage", "webview"]
-    ```
+3. Set an appropriate width and height to the webview tag in [todo.css](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/1_webview/todo.css) (it has zero size by default):
+    ```css
+    webview {
+      width: 100%;
+      height: 200px;
+    }
 
-3. Set an appropriate width and height to the webview tag in CSS (it has zero size by default).
-
-4. Thanks to AngularJS, we now only need to add the `showUri` method to our controller.js and we're done:
+4. Thanks to AngularJS, we now only need to add the `showUri` method to our [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/1_webview/controller.js) and we're done:
     ```js
     $scope.showUri = function(uri) {
       var webview=document.querySelector("webview");
       webview.src=uri;
     };
 
-Test your modified app. You should be able to click on the "view url" link on any dropped URL TODO item, and the corresponding web page will show in the webview. If it's not showing, inspect the page and check if you set the webview size appropriately.
+5. Test your modified app: open the app, right-click, and select Reload App.
+You should be able to click on the "view url" link on any dropped URL TODO item, and the corresponding web page will show in the webview.
+If it's not showing, inspect the page and check if you set the webview size appropriately.
+
+> Note: If you get stuck and want to see the app in action, go to `chrome://extensions`,
+load the unpacked [1_webview](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab8_webresources/1_webview), and launch the app from a new tab.
 
 ## Loading external images
 
@@ -67,7 +78,7 @@ To avoid this restriction, you can use XHR requests, grab the blob corresponding
     ```html
     <img style="max-height: 48px; max-width: 120px;" ng-show="todo.validImage" ng-src="{{todo.imageUrl}}"></img>
     ```
-    Notice that this element will only be shown when the validImage attribute of the TODO item is true.
+    As you soon see, this element will only be shown when the validImage attribute of the TODO item is true.
 
 4. Add the method loadImage (either in controller.js or in a separate script file as we did), that will start a XHR request and execute a callback with a Blob URL:
     ```js
@@ -138,9 +149,13 @@ To avoid this restriction, you can use XHR requests, grab the blob corresponding
     }
     ```
 
-Assuming no mistakes were made, you should now have a thumbnail of every image URL dropped into the TODO list app.
+8. Test your modified app: open the app, right-click, and select Reload App.
+Assuming no mistakes were made, you should now have a thumbnail of every image URL dropped into the Todo list app.
 
-> The loadImage() method above is not the best solution for this problem, because it doesn't handle errors correctly and it could cache images in a local filesystem. We are working on a library that will be much more robust and easier to use.
+> Note: If you get stuck and want to see the app in action, go to `chrome://extensions`,
+load the unpacked [2_loading_resources](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab8_webresources/2_loading_resources), and launch the app from a new tab.
+
+The loadImage() method above is not the best solution for this problem, because it doesn't handle errors correctly and it could cache images in a local filesystem. We are working on a library that will be much more robust and easier to use.
 
 # Takeaways: 
 
