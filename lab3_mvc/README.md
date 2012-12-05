@@ -42,7 +42,7 @@ as long as they are CSP compliant, can be used in a Chrome App. We will use the 
     </html>
     ```
 
-1. Add a simple stylesheet: todo.css
+1. Add a simple stylesheet: [todo.css](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab3_mvc/simpleview/todo.css)
    ```css
    body {
       font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
