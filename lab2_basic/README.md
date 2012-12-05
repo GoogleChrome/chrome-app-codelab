@@ -83,4 +83,4 @@ Lets look at each of these components at their simplest level.
 # What's next?
 
 In [lab3_mvc](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab3_mvc),
-you will learn how to use the [AngluarJS framework](http://angularjs.org/) to build your app.
+you will use the [AngluarJS framework](http://angularjs.org/) to build your app.
