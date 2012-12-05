@@ -175,3 +175,6 @@ The current code only saves the file reference, but it doesn't open the file. Us
 
 * Chrome apps support almost all HTML5 APIs, such as drag and drop. HTML Filesystem API is also supported, with extra features from the Chrome app's Filesystem API extension, like asking the user to pick files on her local disk for read and write. The vanilla HTML5 Filesystem API only allows access to a sandboxed filesystem.
 
+# What's next?
+
+In [lab6_lifecycle](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab6_lifecycle), you will learn the basics of the Chrome app lifecycle. 
