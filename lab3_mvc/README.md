@@ -42,7 +42,7 @@ as long as they are CSP compliant, can be used in a Chrome App. We will use the 
     </html>
     ```
 
-1. Add a simple stylesheet: todo.css
+1. Add a simple stylesheet: [todo.css](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab3_mvc/simpleview/todo.css)
    ```css
    body {
       font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -145,3 +145,8 @@ Note how the data, stored in an array inside the controller, binds to the view a
 
 * MVC frameworks make your life easier. Use them, specially if you want to build a non-trivial application.
 
+# What's next?
+
+Eventually in [lab4_testing](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab4_testing), you will test your app.
+Right now this lab is a work-in-progress. [Please let us know what you need to test your apps](https://docs.google.com/a/google.com/forms/d/1x3309vpp-KTiHqZWOCQhjVrIWxkm0wEBp2IWMG2ywbU/viewform?id=1x3309vpp-KTiHqZWOCQhjVrIWxkm0wEBp2IWMG2ywbU).
+You can then skip ahead to [lab5_data](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab5_data).
