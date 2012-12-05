@@ -18,9 +18,9 @@ as long as they are CSP compliant, can be used in a Chrome App. We will use the 
 
 ## Create a simple view using AngularJS
 
-1. Download the [Angular script](http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js).
+1. Download the [Angular script](http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js) and save it as [angular.min.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab3_mvc/simpleview/angular.min.js).
 
-1. Change your index.html to use a simple Angular sample:
+1. Change your [index.html](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab3_mvc/simpleview/index.html) to use a simple Angular sample:
     ```html
     <html ng-app ng-csp>
       <head>
@@ -42,7 +42,7 @@ as long as they are CSP compliant, can be used in a Chrome App. We will use the 
     </html>
     ```
 
-1. Check the results by [reloading the app](http://developer.chrome.com/trunk/apps/publish_app.html).
+1. Check the results by reloading the app: open the app, right-click and select Reload App.
 
 > Note: The ng-csp directive tells Angular to run in a "content security mode". You don't need this directive when using Angular v1.1.0+. We've included it here so that the sample works regardless of the Angular version in use.
 
@@ -50,7 +50,7 @@ as long as they are CSP compliant, can be used in a Chrome App. We will use the 
 
 The previous sample, although interesting, is not exactly useful. Let's transform it into a real Todo list, instead of a simple Todo item. We will create a controller (controller.js) and make some small changes in the index.html:
 
-1. Add the controller.js file:
+1. Add the [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab3_mvc/withcontroller/controller.js) file:
     ``` Javascript
     function TodoCtrl($scope) {
       $scope.todos = [
@@ -80,7 +80,7 @@ The previous sample, although interesting, is not exactly useful. Let's transfor
     }
     ```
 
-1. Change index.html file:
+1. Change [index.html](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab3_mvc/withcontroller/index.html) file:
     ``` html
     <html ng-app ng-csp>
       <head>
@@ -109,7 +109,7 @@ The previous sample, although interesting, is not exactly useful. Let's transfor
     </html>
     ```
 
-1. Check the results by [reloading the app](http://developer.chrome.com/trunk/apps/publish_app.html).
+1. Check the results by reloading the app: open the app, right-click and select Reload App.
 
 Note how the data, stored in an array inside the controller, binds to the view and is automatically updated when it is changed by the controller.
 
