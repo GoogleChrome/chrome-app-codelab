@@ -11,7 +11,7 @@ There are three core pieces to any Chrome app:
 Lets look at each of these components at their simplest level. 
 
 1. In an empty directory (let's call it &lt;myappdir&gt;), create three files:
-    * Manifest: manifest.json
+    * Manifest: [manifest.json](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab2_basic/manifest.json)
 
         ```json
         {
@@ -25,14 +25,14 @@ Lets look at each of these components at their simplest level.
           }
         }
         ```
-    * Background script: main.js
+    * Background script: [main.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab2_basic/main.js)
         ``` js
         chrome.app.runtime.onLaunched.addListener(function() {
             chrome.app.window.create('index.html',
               {width: 500, height: 309});
           });
         ```
-    * User interface: index.html
+    * User interface: [index.html](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab2_basic/index.html)
         ```html
         <html>
           <head>
@@ -52,6 +52,11 @@ Lets look at each of these components at their simplest level.
     * Open a new Chrome tab.
     * Click on the "My First App" icon.
 
+## You should also read
+
+* [Create Your First App](http://developer.chrome.com/trunk/apps/first_app.html)
+* [chrome.app.runtime](http://developer.chrome.com/trunk/apps/app.runtime.html)
+* [chrome.app.window](http://developer.chrome.com/trunk/apps/app.window.html)
 
 ## Debug, fix, and reload app.
 
@@ -68,8 +73,14 @@ Lets look at each of these components at their simplest level.
 
 1. After changing code, right-click on your app and select Reload App to reload the changed files. All Developer Tools windows will be reopened when you reload your app.
 
+1. Launch the app in a new tab page. Move the top window and you will see the second window behind it. 
+
 # Takeaways
 
 * Chrome apps have three basic pieces. The first and foremost is the manifest.json, which describes your app, requests special permissions, defines important meta information and much more. The second part is the background script, which contains all logic not tied to a specific user interface. The last part is the user interface: HTML, CSS, JavaScripts related to the interface, images, etc.
 * Chrome apps can be debugged just like standard web pages using the Chrome Developer Tools. But since an app doesn't have the Reload control of a browser, a Reload App option has been added when you run in Developer mode.
 
+# What's next?
+
+In [lab3_mvc](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab3_mvc),
+you will learn how to use the [AngluarJS framework](http://angularjs.org/) to build your app.
