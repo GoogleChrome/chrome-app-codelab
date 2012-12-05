@@ -13,16 +13,23 @@ Here's a [very simple feedback form](https://docs.google.com/a/google.com/forms/
 
 Learn more about Chrome Apps
 ----------------------------
-* Read the docs: http://developer.chrome.com/apps/. They aren't overly complicated, there's decent API, and we are working every day to make them better.
+* Read the [docs](http://developer.chrome.com/apps/).
+* Check out the [Chrome Apps APIs](http://developer.chrome.com/apps/api_index.html).
 * Fork any and all [chrome-app-samples](https://github.com/GoogleChrome/chrome-app-samples) and make something of your own.
+* Watch the [Chrome Apps GDL sessions](https://developers.google.com/live/chrome/).
 * Follow the Chrome Apps Todo tutorial here.
 
 
 About this Tutorial
 -------------------
-The goal of this tutorial is to get you building Chrome apps fast. Once you've comleted the tutorial,
-you will have a simple Todo app. We've done our best to capture some of the trickier parts to the development process
+The goal of this tutorial is to get you building Chrome apps fast.
+We've done our best to capture some of the trickier parts to the development process
 keeping the sample simple and straightforward.
+
+Once you've comleted the tutorial,
+you will have a simple Todo app. The sample code in each lab builds upon the previous.
+To see how the Todo app changes as you work through the lab,
+you can upload the code in each lab and launch the app from a new tab.
 
 Tutorial structure
 ------------------

@@ -4,7 +4,7 @@
 
 * [Chrome Canary on Mac and Windows](https://tools.google.com/dlpage/chromesxs) and [Chromium Dev on Linux](http://www.chromium.org/getting-involved/dev-channel#TOC-Linux)
 
-* Your preferred text editor. We have an under-development [Chrome apps plugin](http://chrome-api.storage.googleapis.com/index.html) for [Sublime](http://www.sublimetext.com).
+* Open your preferred text editor. We have an under-development [Chrome apps plugin](http://chrome-api.storage.googleapis.com/index.html) for [Sublime](http://www.sublimetext.com).
 
 ## Set up Chrome
 
@@ -18,6 +18,9 @@
 1. Enable Developer mode in `chrome://extensions`:<br>
 ![Enabling developer mode](https://raw.github.com/GoogleChrome/chrome-app-codelab/master/lab1_setup/imgs/screenshot2.png)
 
+> Note: Open the `chrome://extensions` page in it's own window and keep it assessible as you work through the lab.
+You will use this page quite a bit to load and reload the Todo app.
+
 ## Set up workspace
 
 If you don't have it yet, [install git](https://help.github.com/articles/set-up-git) and run 
@@ -28,3 +31,6 @@ If you don't have it yet, [install git](https://help.github.com/articles/set-up-
 
 Note: for the rest of this tutorial, we'll refer to the directory for the cloned git repository as &lt;tutorial&gt;.
 
+# What's next?
+
+In [lab2_basic](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab2_basic), you will create your first Chrome app!
