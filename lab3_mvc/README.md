@@ -5,7 +5,7 @@ harder and harder to manage without a good separation of roles among app compone
 models for structuring a complex application, no matter what language, is the Model-View-Controller (MVC) and
 its variants, like Model-View-Presentation (MVP).
 
-There are several frameworks to help apply MVC concepts to a Javascript application, and most of them,
+There are several frameworks to help apply [MVC concepts](http://developer.chrome.com/trunk/apps/app_frameworks.html) to a Javascript application, and most of them,
 as long as they are CSP compliant, can be used in a Chrome App. We will use the [AngularJS](http://angularjs.org/) framework in parts of this tutorial, with a special focus on the framework in this section.
 
 ## You should also read
