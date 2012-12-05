@@ -42,6 +42,30 @@ as long as they are CSP compliant, can be used in a Chrome App. We will use the 
     </html>
     ```
 
+1. Add a simple stylesheet: todo.css
+   ```css
+   body {
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+   }
+
+   ul {
+      list-style: none;
+   }
+
+   button, input[type=submit] {
+      background-color: #0074CC;
+      background-image: linear-gradient(top, #08C, #05C);
+      border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+      color: white;
+   }
+
+   .done-true {
+      text-decoration: line-through;
+      color: grey;
+   }
+   ```
+
 1. Check the results by reloading the app: open the app, right-click and select Reload App.
 
 > Note: The ng-csp directive tells Angular to run in a "content security mode". You don't need this directive when using Angular v1.1.0+. We've included it here so that the sample works regardless of the Angular version in use.
