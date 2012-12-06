@@ -157,6 +157,8 @@ Setting Todo's imageUrls to the PLACEHOLDER_IMAGE will force the loadImages meth
     ```
 
 To test, open the app, right-click, and select Reload App.
+Go to [Google images](https://www.google.com/imghp?hl=en&tab=wi&authuser=0), search for and select an image,
+then drag and drop the image into the Todo list app.
 Assuming no mistakes were made, you should now have a thumbnail of every image URL dropped into the Todo list app.
 
 > Note: If you get stuck and want to see the app in action, go to `chrome://extensions`,
