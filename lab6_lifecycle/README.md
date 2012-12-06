@@ -7,9 +7,11 @@ Like everything in this world, apps have a lifecycle.  They are installed, launc
 
 ## The event page
 
-The event page is one of the most important pieces of a Chrome app. It's responsible for what gets launched, when, and how. For example, if your app is an instant messenger, you might want your event page to only show a UI when there is a new notification.
+The event page is one of the most important pieces of a Chrome app. It's responsible for what gets launched, when, and how.
+For example, if your app is an instant messenger, you might want your event page to only show a UI when there is a new notification.
 
-For simpler apps, the event page listens to the app lifecycle events and reacts appropriately. There are two important lifecycle events, onLaunched and onRestarted.
+For simpler apps, the event page listens to the app lifecycle events and reacts appropriately.
+There are two important lifecycle events, [onLaunched](http://developer.chrome.com/trunk/apps/app.runtime.html#event-onLaunched) and [onRestarted](http://developer.chrome.com/trunk/apps/app.runtime.html#event-onRestarted).
 
 ## The onLaunched event and the chrome.app.window.create method
 
@@ -17,9 +19,9 @@ onLaunched is the most important event. It fires when the user clicks on your ap
 
 ### Windows with IDs
 
-The chrome.app.window.create method can associate an ID to the window being opened. Currently, the most interesting use for this is to restore a window's width, height and location and its associated Developer Tools window, if opened, when the app is launched. 
+The [chrome.app.window.create](http://developer.chrome.com/trunk/apps/app.window.html#method-create) method can associate an ID to the window being opened. Currently, the most interesting use for this is to restore a window's width, height and location and its associated Developer Tools window, if opened, when the app is launched. 
 
-Execute your app as it is now, move and resize the window, close and restart it. The app will reopen in the original location, right? Now add a property `id` to the `main.js`, reload the app and test again:
+Execute your app as it is now, move and resize the window, close and restart it. The app will reopen in the original location, right? Now add a property `id` to the [main.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab6_lifecycle/main.js), reload the app and test again:
 
 ``` js
 chrome.app.runtime.onLaunched.addListener(function() {
@@ -30,18 +32,22 @@ chrome.app.runtime.onLaunched.addListener(function() {
 
 If your application requires, you can open more than one window.
 
-
 ## The onRestarted event
 
-The onRestarted event is not as essential as onLaunched, but it might be relevant to certain types of apps. This event is executed when the app is restarted, for example, when Chrome quits, restarts, and the app is launched again. You can use this event to restore a transient state. 
+The onRestarted event is not as essential as onLaunched, but it might be relevant to certain types of apps.
+This event is executed when the app is restarted, for example, when Chrome quits, restarts, and the app is launched again.
+You can use this event to restore a transient state. 
 
-For example, if your app has a form with several fields, you won't always want to save the partial form while the user is typing. If the user quits the app on purpose, she might not be interested keeping the partial data. If the Chrome runtime restarted for some reason other than by a user's intention, the user will want that data when the app is restarted.
+For example, if your app has a form with several fields, you won't always want to save the partial form while the user is typing.
+If the user quits the app on purpose, she might not be interested keeping the partial data.
+If the Chrome runtime restarted for some reason other than by a user's intention, the user will want that data when the app is restarted.
 
-Let's change our code to save the TODO input field in chrome.storage.local as the user types, only restoring it if the onRestarted event is triggered.
+Let's change our code to save the Todo input field in [chrome.storage.local](http://developer.chrome.com/trunk/apps/storage.html) as the user types, only restoring it if the onRestarted event is triggered.
 
-> Note: We learned about chrome.storage.sync before, but chrome.storage.local wasn't mentioned until now. Both have exactly the same syntax, but the semantics of chrome.storage.local is, as the name says, completely local. There's no attempt to synchronize or to save the data in the cloud.
+> Note: We learned about chrome.storage.sync before, but chrome.storage.local wasn't mentioned until now. Both have exactly the same syntax, but the semantics of chrome.storage.local is, as the name says, completely local.
+There's no attempt to synchronize or to save the data in the cloud.
 
-* Event page: main.js
+* Event page: [main.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab6_lifecycle/main.js)
     ``` js
     chrome.app.runtime.onLaunched.addListener(function() {
       // normal launch initiated by the user, let's start clean.
@@ -73,7 +79,7 @@ Let's change our code to save the TODO input field in chrome.storage.local as th
     }
     ```
 
-* Controller: controller.js
+* Controller: add to existing [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab6_lifecycle/controller.js)
     ``` js
     var newTodoInput = null;
 
@@ -100,8 +106,22 @@ Let's change our code to save the TODO input field in chrome.storage.local as th
       })
     })
     ```
+* Save the changes by reloading the app: open the app, right-click and select Reload.
+
+If Chrome and the app shuts down for any reason (other than a user-gesture), the onRestarted event is fired.
+Any text entered in the input field (but not yet saved as a Todo item) will reappear when Chrome and the app are reopened.
+
+> Note: If you get stuck and want to see the app in action, go to `chrome://extensions`,
+load the unpacked [lab6_lifecycle](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab6_lifecycle), and launch the app from a new tab.
 
 # Takeaways: 
 
-* The event page may continue to run even when your windows are closed. You can move logic that is shared among windows to the event page, as we will see in lab9.
+* The event page may continue to run even when your windows are closed.
+You can move logic that is shared among windows to the event page, as we will see in [lab9](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab9_multipleviews).
 
+# What's next?
+
+In [lab7_useridentification](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab7_useridentification),
+you will learn how to identify users and use OAuth2.0 to access Google and other third party services.
+
+> Note: The [identify API](http://developer.chrome.com/trunk/apps/app_identity.html) covered in lab 7 is still experimental.
