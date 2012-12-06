@@ -1,6 +1,7 @@
 # Lab 7 - User Identity
 
-Most modern applications are attached to the web to synchronize data. When synchronizing data, you need to identify who the user is. Chrome apps come with an [identity API](http://developer.chrome.com/trunk/apps/experimental.identity.html) that makes it easy to integrate either with Google accounts or with any other service that supports OAuth.
+Most modern applications are attached to the web to synchronize data. When synchronizing data, you need to identify who the user is.
+Chrome apps come with an [identity API](http://developer.chrome.com/trunk/apps/experimental.identity.html) that makes it easy to integrate either with Google accounts or with any other service that supports OAuth.
 
 1.  Built in - Google Authenticiation
 2.  Third Party Authentication (Twitter, Foursquare, etc.)
@@ -8,8 +9,8 @@ Most modern applications are attached to the web to synchronize data. When synch
 ## You should also read
 [Identify User](http://developer.chrome.com/trunk/apps/app_identity.html) in Chrome app docs
 
-
-> Note: Apps with authentication require the experimental permission in the manifest.json and, until they came out of experimental state, they cannot be uploaded to the Chrome Web Store. If you prefer, you can choose to skip this lab.
+> Note: Apps with authentication require the experimental permission in the manifest.json and, until they came out of experimental state, they cannot be uploaded to the Chrome Web Store.
+If you prefer, you can choose to skip this lab.
 
 ## Authenticating with Google
 
@@ -28,7 +29,7 @@ You can integrate with Google services easily by using our enhanced OAuth2 flow.
     }
     ```
 
-2.  Start the authentication flow. We manage the rest.
+2.  Start the authentication flow using [getAuthToken](http://developer.chrome.com/trunk/apps/experimental.identity.html#method-getAuthToken). We manage the rest.
     ```js
     chrome.experimental.identity.getAuthToken(function(token) { 
         if (token) {
@@ -41,16 +42,21 @@ You can integrate with Google services easily by using our enhanced OAuth2 flow.
 
 ## Integrating with a 3rd Party Service (FourSquare)
 
-OAuth is normally really hard. For a full integration example, check out our [Foursquare demo](https://github.com/GoogleChrome/chrome-app-samples/tree/master/appsquare). Chrome apps have a dedicated API for lauching the authentication flow to any 3rd party service, called `launchWebAuthFlow`.
+OAuth is normally really hard. For a full integration example, check out our [Foursquare demo](https://github.com/GoogleChrome/chrome-app-samples/tree/master/appsquare).
+Chrome apps have a dedicated API for lauching the authentication flow to any 3rd party service, called [launchWebAuthFlow](http://developer.chrome.com/trunk/apps/experimental.identity.html#method-launchWebAuthFlow).
 
-If you choose to interface with a non-Google party, your app will receive the OAuth token via the URL query string. You can then use the storage APIs to persist it.
+If you choose to interface with a non-Google party, your app will receive the OAuth token via the URL query string.
+You can then use the storage APIs to persist it.
 
-When running the app unpacked, your app will normally have a different ID depending on the directory it is loaded from (the unpacked extension ID is a hash of the path on disk). But the redirect URL used to configure your app with the provider is of the form:
+When running the app unpacked, your app will normally have a different ID depending on the directory it is loaded from (the unpacked extension ID is a hash of the path on disk).
+But the redirect URL used to configure your app with the provider is of the form:
     
     https://<appid>.chromiumapp.org/
 
 
-So this will result in the auth API not working, since the redirect URL varies. To force the unpacked app to always have the same ID, add a `key` to your manifest.json. Since we will be accessing Foursquare API, we also need to request the appropriate permission:
+So this will result in the auth API not working, since the redirect URL varies.
+To force the unpacked app to always have the same ID, add a `key` to your manifest.json.
+Since we will be accessing Foursquare API, we also need to request the appropriate permission:
 ```json
 {
     ...,
@@ -59,7 +65,8 @@ So this will result in the auth API not working, since the redirect URL varies. 
 }
 ```
 
-This key is a base64 encoded version of the app's public key. Remember, this key MUST be removed before uploading it to the Chrome Web Store.
+This key is a base64 encoded version of the app's public key.
+Remember, this key MUST be removed before uploading it to the Chrome Web Store.
 
 Now let's get into the nitty gritty. Create a file called `foursquare.js` in your application and add the following code:
 ```js
@@ -160,9 +167,12 @@ Now let's get into the nitty gritty. Create a file called `foursquare.js` in you
 
 ## Under the hood
 
-There's a lot going on here (it's OAuth after all), but the critical part in the Chrome side is the method called `launchAuthFlow`. This handles the authentication part, and to ensure no one can query or inspect, it opens a new window isolated from your application.
+There's a lot going on here (it's OAuth after all), but the critical part in the Chrome side is the method called `launchAuthFlow`.
+This handles the authentication part, and to ensure no one can query or inspect, it opens a new window isolated from your application.
 
-Finally, the user is directed to the callback URL which Chrome is listening out for and it will fire the callback event registered in your `launchAuthFlow` call. The `launchAuthFlow` receives the final redirect target URL from the authentication flow. In nearly all cases, this URL includes the information your app will need to identify the user: the request token (which is used to get a valid access token... the joys of OAuth).
+Finally, the user is directed to the callback URL which Chrome is listening out for and it will fire the callback event registered in your `launchAuthFlow` call.
+The `launchAuthFlow` receives the final redirect target URL from the authentication flow.
+In nearly all cases, this URL includes the information your app will need to identify the user: the request token (which is used to get a valid access token... the joys of OAuth).
 
 This is really cool. We have a wrapper to Foursquare's authentication mechanism, and a way to call the API. Now that we can do this, we really really need to be able to do something useful with it.
 
@@ -174,7 +184,8 @@ Lets create a button for Sign-in.
 <button id="signing">Sign-in</button>
 ```
 
-Now we need to make this button do something. Luckily Angular lets us do some cool stuff here. All we need to do is add items to the model that contains the todos.
+Now we need to make this button do something.
+Luckily Angular lets us do some cool stuff here. All we need to do is add items to the model that contains the todos.
 
 ```js
 var onSuccess = function(data) { };
@@ -182,7 +193,12 @@ var onError = function(data) { };
 foursquare.getRecentCheckins(onSuccess, onError);
 ```
 
-We will leave it up to you to make sure that every time the app is loaded, the new data is fetched. (hint: chrome.app.runtime.onLaunched event).
+We will leave it up to you to make sure that every time the app is loaded, the new data is fetched.
+(hint: [chrome.app.runtime.onLaunched](http://developer.chrome.com/trunk/apps/app.runtime.html#event-onLaunched) event).
 
 After all this you might argue, "Why is putting locations into my Todo list important if I've already been to the place?"  That is a good question. ;) - but you got to see the Chrome Identity API in action.
 
+# What's next?
+
+In [lab8_webresources](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab8_webresources),
+you will learn how to load and show images from a remote URL.
