@@ -1,7 +1,9 @@
 Lab 10 - Publishing
 ===================
 
-An app without users is just a piece of code. To get users, you need to distribute your application. All Chrome applications are distributed through the [Chrome Web Store](https://chrome.google.com/webstore). For those not familiar with the store, it provides several benefits to users and developers.
+An app without users is just a piece of code. To get users, you need to distribute your application.
+All Chrome applications are distributed through the [Chrome Web Store](https://chrome.google.com/webstore).
+For those not familiar with the store, it provides several benefits to users and developers.
 
 For users:
 
@@ -18,7 +20,8 @@ For developers:
 
 The Chrome Web Store has a special [dashboard for Developers](https://chrome.google.com/webstore/developer/dashboard) that lets you upload new applications and update existing ones.
 
-The functionality to upload new-style Chrome Apps has only just been enabled for developers. We need as much [feedback](https://docs.google.com/a/google.com/forms/d/1x3309vpp-KTiHqZWOCQhjVrIWxkm0wEBp2IWMG2ywbU/viewform?id=1x3309vpp-KTiHqZWOCQhjVrIWxkm0wEBp2IWMG2ywbU) as possible on the process.
+The functionality to upload new-style Chrome Apps has only just been enabled for developers.
+We need as much [feedback](https://docs.google.com/a/google.com/forms/d/1x3309vpp-KTiHqZWOCQhjVrIWxkm0wEBp2IWMG2ywbU/viewform?id=1x3309vpp-KTiHqZWOCQhjVrIWxkm0wEBp2IWMG2ywbU) as possible on the process.
 
 The process of uploading apps is simple:
 
@@ -29,6 +32,9 @@ The process of uploading apps is simple:
     ![Developer Dashboard Upload](https://raw.github.com/GoogleChrome/chrome-app-codelab/master/lab_10_publishing/imgs/upload.png)
     ![Developer Dashboard Find](https://raw.github.com/GoogleChrome/chrome-app-codelab/master/lab_10_publishing/imgs/findfile.png)
 4.  Upload.
+
+> Note: To walkthrough the publishing process, you can use any of the sample apps in this code lab.
+Just make sure it contains the manifest.json.
 
 You should see a screen that looks like this:
 
