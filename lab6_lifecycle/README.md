@@ -111,6 +111,9 @@ There's no attempt to synchronize or to save the data in the cloud.
 If Chrome and the app shuts down for any reason (other than a user-gesture), the onRestarted event is fired.
 Any text entered in the input field (but not yet saved as a Todo item) will reappear when Chrome and the app are reopened.
 
+> Note: If you get stuck and want to see the app in action, go to `chrome://extensions`,
+load the unpacked [lab6_lifecycle](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab6_lifecycle), and launch the app from a new tab.
+
 # Takeaways: 
 
 * The event page may continue to run even when your windows are closed.
