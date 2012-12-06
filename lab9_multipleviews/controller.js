@@ -20,10 +20,6 @@ function TodoCtrl($scope) {
     }
   } 
 
-  $scope.$on('add', function(data) {
-    debugger;
-  });
-
   $scope.save = function() {
     chrome.storage.sync.set({'todolist': $scope.todos});
   };
