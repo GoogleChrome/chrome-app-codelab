@@ -40,165 +40,85 @@ You can integrate with Google services easily by using our enhanced OAuth2 flow.
     }.bind(this)); 
     ```
 
-## Integrating with a 3rd Party Service (FourSquare)
+## Integrating with a 3rd Party Service
 
-OAuth is normally really hard. For a full integration example, check out our [Foursquare demo](https://github.com/GoogleChrome/chrome-app-samples/tree/master/appsquare).
 Chrome apps have a dedicated API for lauching the authentication flow to any 3rd party service, called [launchWebAuthFlow](http://developer.chrome.com/trunk/apps/experimental.identity.html#method-launchWebAuthFlow).
+To show how this flow works, we're going to update our sample to import [Google Tasks](https://developers.google.com/google-apps/tasks/) into the Todo list.
 
-If you choose to interface with a non-Google party, your app will receive the OAuth token via the URL query string.
-You can then use the storage APIs to persist it.
+### Register with the provider
+To register with a third-party provider, you need to follow whatever protocol they have to access their APIs.
+Here we are treating the Google API as a third-party service and following Google's protocol for accessing their APIs.
+(This also happens to be a handy way to get around the Google API whitelisting for the time being.)
 
-When running the app unpacked, your app will normally have a different ID depending on the directory it is loaded from (the unpacked extension ID is a hash of the path on disk).
-But the redirect URL used to configure your app with the provider is of the form:
-    
-    https://<appid>.chromiumapp.org/
+1. Create a new project in the [Google API console](https://code.google.com/apis/console).
+2. Activate the Tasks API on [Services](https://code.google.com/apis/console/b/0/?pli=1#project:399702396726:services).
+3. Create a new OAuth2.0 client ID on API Access. Choose Web application and leave other fields unchanged.
+4. Click to Edit settings for the newly created client ID.
+5. In Authorized Redirect URLs, add "https://<YOURAPP_ID>.chromiumapp.org/",
+replacing <YOURAPP_ID> with your app ID (the app's long alphanumeric ID in `chrome://extensions`).
 
+### Add permissions
 
-So this will result in the auth API not working, since the redirect URL varies.
-To force the unpacked app to always have the same ID, add a `key` to your manifest.json.
-Since we will be accessing Foursquare API, we also need to request the appropriate permission:
+Update the [manifest.json](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/manifest.json) to include the "experimental" and Google API tasks endpoint permissions:
 ```json
 {
-    ...,
-    "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDnyZBBnfu+qNi1x5C0YKIob4ACrA84HdMArTGobttMHIxM2Z6aLshFmoKZa/pbyQS6D5yNywr4KM/llWiY2aV2puIflUxRT8SjjPehswCvm6eWQM+r3mB755m48x+diDl8URJsX4AJ3pQHnKWEvitZcuBh0GTfsLzKU/BfHEaH7QIDAQAB",
-    "permissions": ["https://foursquare.com/*"]
+     ... ,
+     "permissions": ["storage", "experimental", "https://www.googleapis.com/tasks/*"]
 }
 ```
 
-This key is a base64 encoded version of the app's public key.
-Remember, this key MUST be removed before uploading it to the Chrome Web Store.
+### Add Google tasks to the Todo list
+Soon your app will be able to import tasks from the Google Tasks API into the Todo list.
+For this to work, your app needs a valid access token.
+Once it has this token, it can call the Google Tasks API.
+The app also needs a new button. When pressed, the user's Google tasks will appear in the Todo list.
 
-Now let's get into the nitty gritty. Create a file called `foursquare.js` in your application and add the following code:
-```js
- var foursquare = {};
+1. Create a new file to authenticate access to the Google Tasks API: [gpapi_tasks.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/gapi_tasks.js).
+This calls `launchWebFlow` and gets a valid access token for the Tasks API url indicated in the `manifest.json`
 
- (function(api) {
-     // See "Pure AJAX application" from
-     // https://developer.foursquare.com/overview/auth
-     var ACCESS_TOKEN_PREFIX = '#access_token=';
-
-     var storage = chrome.storage.local;
-     var ACCESS_TOKEN_STORAGE_KEY = 'foursquare-access-token';
-
-     var getAccessToken = function(callback) {
-     storage.get(ACCESS_TOKEN_STORAGE_KEY, function(items) {
-         callback(items[ACCESS_TOKEN_STORAGE_KEY]);
-         });
-     }
-
-     var setAccessToken = function(accessToken, callback) {
-         var items = {};
-         items[ACCESS_TOKEN_STORAGE_KEY] = accessToken;
-         storage.set(items, callback);
-     }
-
-     var clearAccessToken = function(callback) {
-         storage.remove(ACCESS_TOKEN_STORAGE_KEY, callback);
-     }
-
-     // Tokens state is not exposed via the API
-     api.isSignedIn = function(callback) {
-         getAccessToken(function(accessToken) {
-             callback(!!accessToken);
-         });
-     };  
-
-     api.signIn = function(appId, clientId, successCallback, errorCallback) {
-         var redirectUrl = 'https://' + appId + '.chromiumapp.org/';
-         var authUrl = 'https://foursquare.com/oauth2/authorize?' +
-             'client_id=' + clientId + '&' +
-             'response_type=token&' +
-             'redirect_uri=' + encodeURIComponent(redirectUrl);
-     
-         chrome.experimental.identity.launchWebAuthFlow(
-             {url: authUrl},
-             function(responseUrl) {
-                 if (chrome.extension.lastError) {
-                     errorCallback(chrome.extension.lastError.message);
-                     return;
-                 }
-
-                 var accessTokenStart = responseUrl.indexOf(ACCESS_TOKEN_PREFIX);
-
-                 if (!accessTokenStart) {
-                     errorCallback('Unexpected responseUrl: ' + responseUrl);
-                     return;
-                 }
-
-                 var accessToken = responseUrl.substring(
-                 accessTokenStart + ACCESS_TOKEN_PREFIX.length);
-
-                 setAccessToken(accessToken, successCallback);
-             }
-         );
-    };
-
-    api.signOut = function(callback) {
-      clearAccessToken(callback);
-    };
-
-    var apiMethod = function( path, postData, params, successCallback, errorCallback) {
-         getAccessToken(function(accessToken) {
-             var xhr = new XMLHttpRequest();
-             xhr.onload = function() {
-                successCallback(JSON.parse(xhr.responseText).response);
-             }
-             xhr.onerror = function() {
-                errorCallback(xhr.status, xhr.statusText, JSON.parse(xhr.responseText));
-             }
-
-             var encodedParams = [];
-             for (var paramName in params) {
-                 encodedParams.push(encodeURIComponent(paramName) + '=' +
-                 encodeURIComponent(params[paramName]));
-             }
-             xhr.open(
-                 'GET',
-                 'https://api.foursquare.com/v2/' + path + '?oauth_token=' +
-                 encodeURIComponent(accessToken) + '&' + encodedParams.join('&'),
-                 true);
-             xhr.send(null);
-         });
+2. Add a new method to [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/controller.js) that imports the Google tasks into the Todo list:
+    ``` js
+    $scope.importFromGTasks = function() {
+      var api = new TasksAPI();
+      var clientId = "<GET_YOURS_AT_https://code.google.com/apis/console>";
+      api.authenticate(clientId, function() {
+        api.getLists(function(result) {
+          console.log(result);
+          if (!result || !result.items || result.items.length==0) {
+            throw "No task lists available";
+          }
+          var listId=result.items[0].id;
+          api.getTasks(listId, function(tasks) {
+            console.log(tasks);
+            for (var j=0; j<tasks.items.length; j++) {
+              $scope.$apply(function() {
+                $scope.todos.push({text:tasks.items[j].title, done:tasks.items[j].status!="needsAction"});
+              });
+            }
+          });
+        });
+      });
     }
+    ```   
 
-    api.getRecentCheckins = apiMethod.bind(api, 'checkins/recent', undefined);
-})(foursquare);
-```
-
-## Under the hood
-
-There's a lot going on here (it's OAuth after all), but the critical part in the Chrome side is the method called `launchAuthFlow`.
-This handles the authentication part, and to ensure no one can query or inspect, it opens a new window isolated from your application.
-
-Finally, the user is directed to the callback URL which Chrome is listening out for and it will fire the callback event registered in your `launchAuthFlow` call.
-The `launchAuthFlow` receives the final redirect target URL from the authentication flow.
-In nearly all cases, this URL includes the information your app will need to identify the user: the request token (which is used to get a valid access token... the joys of OAuth).
-
-This is really cool. We have a wrapper to Foursquare's authentication mechanism, and a way to call the API. Now that we can do this, we really really need to be able to do something useful with it.
-
-In your `TODO` Javascript file, we need to hook up the API.
-
-Lets create a button for Sign-in.
-    
+3. Replace line 109 in [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/controller.js) with your new project's Client ID string, something like:
+    ```js
+    var clientId = "xxxxxxxxxxxxxx..apps.googleusercontent.com";
+    ```
+4. Update [index.html](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/index.html) to include `gpapi_tasks.js` and add a new button to call `importFromGTasks`:
 ```html
-<button id="signing">Sign-in</button>
+<button ng-click="importFromGTasks()">import tasks from GTasks</button>
+</html>
 ```
 
-Now we need to make this button do something.
-Luckily Angular lets us do some cool stuff here. All we need to do is add items to the model that contains the todos.
-
-```js
-var onSuccess = function(data) { };
-var onError = function(data) { };
-foursquare.getRecentCheckins(onSuccess, onError);
-```
-
-We will leave it up to you to make sure that every time the app is loaded, the new data is fetched.
-(hint: [chrome.app.runtime.onLaunched](http://developer.chrome.com/trunk/apps/app.runtime.html#event-onLaunched) event).
-
-After all this you might argue, "Why is putting locations into my Todo list important if I've already been to the place?"  That is a good question. ;) - but you got to see the Chrome Identity API in action.
+> Note: If you get stuck and want to see the app in action,
+go to `chrome://extensions`, load the unpacked [lab7_useridentification](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab7_useridentification) app,
+and launch the app from a new tab.
 
 # What's next?
 
 In [lab8_webresources](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab8_webresources),
 you will learn how to load and show images from a remote URL.
+
+> Note: Up until now, the code in each lab builds upon the previous lab code sample.
+We've decided not to include the user identification code changes in the remainder of the lab since the `identity API` is still experimental (and you wouldn't be able to publish the sample code to the store).
