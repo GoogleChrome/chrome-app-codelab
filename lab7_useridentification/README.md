@@ -68,7 +68,7 @@ Update the [manifest.json](https://github.com/GoogleChrome/chrome-app-codelab/bl
 ```
 
 ### Add Google tasks to the Todo list
-Soon your app will be able to import tasks from the Google Tasks API into the Todo list.
+Soon your app will be able to import Google tasks into the Todo list.
 For this to work, your app needs a valid access token.
 Once it has this token, it can call the Google Tasks API.
 The app also needs a new button. When pressed, the user's Google tasks will appear in the Todo list.
