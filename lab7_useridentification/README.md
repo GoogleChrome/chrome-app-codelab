@@ -51,7 +51,7 @@ Here we are treating the Google API as a third-party service and following Googl
 (This also happens to be a handy way to get around the Google API whitelisting for the time being.)
 
 1. Create a new project in the [Google API console](https://code.google.com/apis/console).
-2. Activate the Tasks API on [Services](https://code.google.com/apis/console/b/0/?pli=1#project:399702396726:services).
+2. Activate the Tasks API on Services.
 3. Create a new OAuth2.0 client ID on API Access. Choose Web application and leave other fields unchanged.
 4. Click to Edit settings for the newly created client ID.
 5. In Authorized Redirect URLs, add "https://<YOURAPP_ID>.chromiumapp.org/",
