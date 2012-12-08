@@ -76,7 +76,7 @@ The app also needs a new button. When pressed, the user's Google tasks will appe
 1. Create a new file to authenticate access to the Google Tasks API: [gpapi_tasks.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/gapi_tasks.js).
 This calls `launchWebFlow` and gets a valid access token for the Tasks API url indicated in the `manifest.json`
 
-2. Add a new method to [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/controller.js) that imports the Google tasks into the Todo list:
+2. Add a new method to the existing [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/controller.js) that imports the Google tasks into the Todo list:
     ``` js
     $scope.importFromGTasks = function() {
       var api = new TasksAPI();
