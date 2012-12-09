@@ -30,7 +30,7 @@ Here we are treating Google as a third-party service. Just follow Google's own r
 2. Activate the Tasks API on the Services secion.
 3. Create a new OAuth2.0 client ID on API Access section. Select Web application and leave other fields unchanged.
 4. Click on Edit settings for the newly created client ID.
-5. In Authorized Redirect URLs, add `https://\<YOURAPP\_ID\>.chromiumapp.org/`,
+5. In Authorized Redirect URLs, add `https://<YOURAPP_ID>.chromiumapp.org/`,
 replacing \<YOURAPP\_ID\> with your app ID (this is the app's long alphanumeric ID you can find in `chrome://extensions`).
 
 ### Add permissions
@@ -48,7 +48,7 @@ Now we are ready to ask user's authorization, so we can connect to the Tasks ser
 Once we have this token, we are able to call the Google Tasks API directly.
 
 
-1. Since this is time consuming and error prone, you can cheat and copy our JavaScript that handles the authentication to the Google Tasks API from here: [gpapi_tasks.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/gapi_tasks.js).
+1. Since this is time consuming and error prone, you can cheat and copy our JavaScript that handles the authentication to the Google Tasks API from here: [gapi_tasks.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/gapi_tasks.js).
 This script calls `launchWebFlow` and gets a valid access token for the specified client ID. It also has simple JavaScript methods that, after authenticated, goes to the Tasks API and gets the user's task lists and the corresponding tasks. 
     > Note: this script is NOT intented to be used in production - it is just a very simple, limited and definitely not robust piece of code intented to highlight the basic authentication and API calls.
 
@@ -85,7 +85,7 @@ This script calls `launchWebFlow` and gets a valid access token for the specifie
     ```js
       var clientId = "xxxxxxxxxxxxxx.apps.googleusercontent.com";
     ```
-4. Now we just need a button that starts the import process. Update the `index.html` to include `gpapi\_tasks.js` and add a new button to call `importFromGTasks`:
+4. Now we just need a button that starts the import process. Update the `index.html` to include `gapi_tasks.js` and add a new button to call `importFromGTasks`:
     ```html
     <script src="gapi_tasks.js"></script>
     ...
@@ -102,4 +102,4 @@ In [lab8_webresources](https://github.com/GoogleChrome/chrome-app-codelab/tree/m
 you will learn how to load and show images from a remote URL.
 
 > Note: Up until now, the code in each lab builds upon the previous lab code sample.
-We've decided not to include the user identification code changes in the remainder of the lab since the `identity API` is still experimental (and you wouldn't be able to publish the sample code to the store).
+We've decided not to include the user identification code changes in the remainder of the lab since the `identity API` is still experimental and as such it would prevent you from publishing your final code to the Chrome Web Store.
