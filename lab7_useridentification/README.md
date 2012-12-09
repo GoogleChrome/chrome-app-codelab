@@ -14,52 +14,28 @@ If you prefer, you can choose to skip this lab.
 
 ## Authenticating with Google
 
-You can integrate with Google services easily by using our enhanced OAuth2 flow.  
+We are working on a very easy integration flow for apps that authenticate with Google accounts. However, this flow is not yet available for general use. In the meantime, you may still use the third-party flow described below, even for Google services.
 
-> Warning: Currently, this feature is only available to whitelisted apps which need to be enabled by a team in the US, so you might want to skip this for now.
+## Integrating with a thrid-party service
 
-1.  Add an oauth2 configuration to your manifest. The oauth2 scope defines the Google services that you want to interact with. The user will be prompted at install time regarding the services you intend to interact with. The oauth2 client ID is obtained from the [Google Developer console](http://developer.google.com/console).
-    ``` js
-    {
-        ...,
-        "oauth2": {
-            "client_id": "yourappnumber.apps.googleusercontent.com",
-            "scopes": ["https://www.googleapis.com/auth/userinfo.profile"]
-        }
-    }
-    ```
-
-2.  Start the authentication flow using [getAuthToken](http://developer.chrome.com/trunk/apps/experimental.identity.html#method-getAuthToken). We manage the rest.
-    ```js
-    chrome.experimental.identity.getAuthToken(function(token) { 
-        if (token) {
-            this.accessToken = token;
-            // Store the token
-        }
-          
-    }.bind(this)); 
-    ```
-
-## Integrating with a 3rd Party Service
-
-Chrome apps have a dedicated API for lauching the authentication flow to any 3rd party service, called [launchWebAuthFlow](http://developer.chrome.com/trunk/apps/experimental.identity.html#method-launchWebAuthFlow).
+Chrome apps have a dedicated API for lauching the authentication flow to any third-party OAuth2 service, called [launchWebAuthFlow](http://developer.chrome.com/trunk/apps/experimental.identity.html#method-launchWebAuthFlow).
 To show how this flow works, we're going to update our sample to import [Google Tasks](https://developers.google.com/google-apps/tasks/) into the Todo list.
 
 ### Register with the provider
-To register with a third-party provider, you need to follow whatever protocol they have to access their APIs.
-Here we are treating the Google API as a third-party service and following Google's protocol for accessing their APIs.
-(This also happens to be a handy way to get around the Google API whitelisting for the time being.)
+To register with a third-party provider, in general you will need to register your application with the provider, and each provider has a different way of exposing that for you. In general, that will be available in a Developer or API section of your profile in the provider's website.
+
+Here we are treating Google as a third-party service and following Google's own registration procedure for accessing its APIs.
 
 1. Create a new project in the [Google API console](https://code.google.com/apis/console).
-2. Activate the Tasks API on Services.
-3. Create a new OAuth2.0 client ID on API Access. Choose Web application and leave other fields unchanged.
-4. Click to Edit settings for the newly created client ID.
-5. In Authorized Redirect URLs, add "https://<YOURAPP_ID>.chromiumapp.org/",
-replacing <YOURAPP_ID> with your app ID (the app's long alphanumeric ID in `chrome://extensions`).
+2. Activate the Tasks API on the Services secion.
+3. Create a new OAuth2.0 client ID on API Access section. Select Web application and leave other fields unchanged.
+4. Click on Edit settings for the newly created client ID.
+5. In Authorized Redirect URLs, add `https://\<YOURAPP\_ID\>.chromiumapp.org/`,
+replacing \<YOURAPP\_ID\> with your app ID (this is the app's long alphanumeric ID you can find in `chrome://extensions`).
 
 ### Add permissions
 
-Update the [manifest.json](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/manifest.json) to include the "experimental" and Google API tasks endpoint permissions:
+Update the [manifest.json](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/manifest.json) to include the "experimental" and Google API tasks endpoint permissions. Note that we also requested permission to make XHR requests to the Tasks service URL - for security reasons, you need explicit permission in the manifest for every URL you will call via XHR.
 ```json
 {
      ... ,
@@ -68,15 +44,14 @@ Update the [manifest.json](https://github.com/GoogleChrome/chrome-app-codelab/bl
 ```
 
 ### Add Google tasks to the Todo list
-Soon your app will be able to import Google tasks into the Todo list.
-For this to work, your app needs a valid access token.
-Once it has this token, it can call the Google Tasks API.
-The app also needs a new button. When pressed, the user's Google tasks will appear in the Todo list.
+Now we are ready to authenticate the user and request his authorization so we can connect to the Tasks service and import his Google tasks into our Todo list. First, we will need to request an access token - which, at the first time will automatically present an authentication and authorization popup to the user.
+Once we have this token, we can call the Google Tasks API.
 
-1. Create a new file to authenticate access to the Google Tasks API: [gpapi_tasks.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/gapi_tasks.js).
-This calls `launchWebFlow` and gets a valid access token for the Tasks API url indicated in the `manifest.json`
 
-2. Add a new method to the existing [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/controller.js) that imports the Google tasks into the Todo list:
+1. Since this is time consuming and error prone, you can cheat and copy our JavaScript that handles the authentication to the Google Tasks API: [gpapi_tasks.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/gapi_tasks.js).
+This script calls `launchWebFlow` and gets a valid access token for the specified client ID. This script also has simple JavaScript methods that, after authenticated, goes to the Tasks API and gets the user's task lists and the corresponding tasks.
+
+2. Add a new method to the existing [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/controller.js) that, using the methods from the previous step, authenticates the user and imports his Google tasks into the Todo list:
     ``` js
     $scope.importFromGTasks = function() {
       var api = new TasksAPI();
@@ -101,14 +76,17 @@ This calls `launchWebFlow` and gets a valid access token for the Tasks API url i
     }
     ```   
 
-3. Replace line 109 in [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/controller.js) with your new project's Client ID string, something like:
+    >Note: replace the following line in the code above with your own project's Client ID that you got from the Google API Console. Should look like this:
     ```js
-    var clientId = "xxxxxxxxxxxxxx..apps.googleusercontent.com";
+    var clientId = "xxxxxxxxxxxxxx.apps.googleusercontent.com";
     ```
-4. Update [index.html](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/index.html) to include `gpapi_tasks.js` and add a new button to call `importFromGTasks`:
+Let's change The app also needs a new button. When pressed, the user's Google tasks will appear in the Todo list.
+
+4. Now we just need a button that starts the import process. Update the `index.html` to include `gpapi\_tasks.js` and add a new button to call `importFromGTasks`:
 ```html
-<button ng-click="importFromGTasks()">import tasks from GTasks</button>
-</html>
+    <script src="gapi_tasks.js"></script>
+    ...
+    <button ng-click="importFromGTasks()">import tasks from GTasks</button>
 ```
 
 > Note: If you get stuck and want to see the app in action,
