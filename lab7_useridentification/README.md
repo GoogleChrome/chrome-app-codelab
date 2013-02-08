@@ -35,7 +35,7 @@ replacing \<YOURAPP\_ID\> with your app ID (this is the app's long alphanumeric 
 
 ### Add permissions
 
-Update the [manifest.json](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/manifest.json) to use "experimental" features. Note that we've also requested permission to make XHR requests to the Tasks service URL - for security reasons, you need to request explicit permission in the manifest for every URL you will call via XHR.
+Update the [manifest.json](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/angularjs/manifest.json) to use "experimental" features. Note that we've also requested permission to make XHR requests to the Tasks service URL - for security reasons, you need to request explicit permission in the manifest for every URL you will call via XHR.
 ```json
 {
      ... ,
@@ -48,11 +48,11 @@ Now we are ready to ask user's authorization, so we can connect to the Tasks ser
 Once we have this token, we are able to call the Google Tasks API directly.
 
 
-1. Since this is time consuming and error prone, you can cheat and copy our JavaScript that handles the authentication to the Google Tasks API from here: [gapi_tasks.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/gapi_tasks.js).
+1. Since this is time consuming and error prone, you can cheat and copy our JavaScript that handles the authentication to the Google Tasks API from here: [gapi_tasks.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/angularjs/gapi_tasks.js).
 This script calls `launchWebFlow` and gets a valid access token for the specified client ID. It also has simple JavaScript methods that, after authenticated, goes to the Tasks API and gets the user's task lists and the corresponding tasks. 
     > Note: this script is NOT intented to be used in production - it is just a very simple, limited and definitely not robust piece of code intented to highlight the basic authentication and API calls.
 
-2. Add a new method to the existing [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/controller.js) that, using the methods from the script of the previous step, authenticates the user and imports his Google tasks into the Todo list:
+2. Add a new method to the existing [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab7_useridentification/angularjs/controller.js) that, using the methods from the script of the previous step, authenticates the user and imports his Google tasks into the Todo list:
     ``` js
     $scope.importFromGTasks = function() {
       var api = new TasksAPI();

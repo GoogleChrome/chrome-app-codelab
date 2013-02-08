@@ -18,9 +18,9 @@ as long as they are CSP compliant, can be used in a Chrome App. We will use the 
 
 ## Create a simple view using AngularJS
 
-1. Download the [Angular script](http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js) and save it as [angular.min.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab3_mvc/simpleview/angular.min.js).
+1. Download the [Angular script](http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js) and save it as [angular.min.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab3_mvc/angularjs/simpleview/angular.min.js).
 
-1. Change your [index.html](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab3_mvc/simpleview/index.html) to use a simple Angular sample:
+1. Change your [index.html](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab3_mvc/angularjs/simpleview/index.html) to use a simple Angular sample:
     ```html
     <html ng-app ng-csp>
       <head>
@@ -42,7 +42,7 @@ as long as they are CSP compliant, can be used in a Chrome App. We will use the 
     </html>
     ```
 
-1. Add a simple stylesheet: [todo.css](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab3_mvc/simpleview/todo.css)
+1. Add a simple stylesheet: [todo.css](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab3_mvc/angularjs/simpleview/todo.css)
    ```css
    body {
       font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -74,7 +74,7 @@ as long as they are CSP compliant, can be used in a Chrome App. We will use the 
 
 The previous sample, although interesting, is not exactly useful. Let's transform it into a real Todo list, instead of a simple Todo item. We will create a controller (controller.js) and make some small changes in the index.html:
 
-1. Add the [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab3_mvc/withcontroller/controller.js) file:
+1. Add the [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab3_mvc/angularjs/withcontroller/controller.js) file:
     ``` Javascript
     function TodoCtrl($scope) {
       $scope.todos = [
@@ -104,7 +104,7 @@ The previous sample, although interesting, is not exactly useful. Let's transfor
     }
     ```
 
-1. Change [index.html](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab3_mvc/withcontroller/index.html) file:
+1. Change [index.html](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab3_mvc/angularjs/withcontroller/index.html) file:
     ``` html
     <html ng-app ng-csp>
       <head>

@@ -21,7 +21,7 @@ onLaunched is the most important event. It fires when the user clicks on your ap
 
 The [chrome.app.window.create](http://developer.chrome.com/trunk/apps/app.window.html#method-create) method can associate an ID to the window being opened. Currently, the most interesting use for this is to restore a window's width, height and location and its associated Developer Tools window, if opened, when the app is launched. 
 
-Execute your app as it is now, move and resize the window, close and restart it. The app will reopen in the original location, right? Now add a property `id` to the [main.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab6_lifecycle/main.js), reload the app and test again:
+Execute your app as it is now, move and resize the window, close and restart it. The app will reopen in the original location, right? Now add a property `id` to the [main.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab6_lifecycle/angularjs/main.js), reload the app and test again:
 
 ``` js
 chrome.app.runtime.onLaunched.addListener(function() {
@@ -47,7 +47,7 @@ Let's change our code to save the Todo input field in [chrome.storage.local](htt
 > Note: We learned about chrome.storage.sync before, but chrome.storage.local wasn't mentioned until now. Both have exactly the same syntax, but the semantics of chrome.storage.local is, as the name says, completely local.
 There's no attempt to synchronize or to save the data in the cloud.
 
-* Event page: [main.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab6_lifecycle/main.js)
+* Event page: [main.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab6_lifecycle/angularjs/main.js)
     ``` js
     chrome.app.runtime.onLaunched.addListener(function() {
       // normal launch initiated by the user, let's start clean.
@@ -79,7 +79,7 @@ There's no attempt to synchronize or to save the data in the cloud.
     }
     ```
 
-* Controller: add to existing [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab6_lifecycle/controller.js)
+* Controller: add to existing [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab6_lifecycle/angularjs/controller.js)
     ``` js
     var newTodoInput = null;
 

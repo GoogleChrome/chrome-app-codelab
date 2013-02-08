@@ -23,12 +23,12 @@ It runs in a separate sandboxed process and can't communicate directly with the 
 
 We will change our code to render the content of URLs dropped in the drag-and-drop operations in a WebView when the user clicks on a link.
 
-1. Request a new permission, "webview", in [manifest.json](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/1_webview/manifest.json):
+1. Request a new permission, "webview", in [manifest.json](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/angularjs/1_webview/manifest.json):
     ```json
     "permissions": ["storage", "webview"]
     ```
 
-2. Add a WebView tag and a link to [index.html](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/1_webview/index.html):
+2. Add a WebView tag and a link to [index.html](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/angularjs/1_webview/index.html):
     ```html
     <!-- in TODO item -->
     <a ng-show="todo.uri" href="" ng-click="showUri(todo.uri)">(view url)</a>
@@ -37,7 +37,7 @@ We will change our code to render the content of URLs dropped in the drag-and-dr
     <webview></webview>
     ```
 
-3. Set an appropriate width and height to the webview tag in [todo.css](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/1_webview/todo.css) (it has zero size by default):
+3. Set an appropriate width and height to the webview tag in [todo.css](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/angularjs/1_webview/todo.css) (it has zero size by default):
     ```css
     webview {
       width: 100%;
@@ -45,7 +45,7 @@ We will change our code to render the content of URLs dropped in the drag-and-dr
     }
     ```
  
-4. Thanks to AngularJS, we now only need to add the `showUri` method to our [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/1_webview/controller.js) and we're done:
+4. Thanks to AngularJS, we now only need to add the `showUri` method to our [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/angularjs/1_webview/controller.js) and we're done:
     ```js
     $scope.showUri = function(uri) {
       var webview=document.querySelector("webview");
@@ -58,7 +58,7 @@ You should be able to click on the "view url" link on any dropped URL Todo item,
 If it's not showing, inspect the page and check if you set the webview size appropriately.
 
 > Note: If you get stuck and want to see the app in action, go to `chrome://extensions`,
-load the unpacked [1_webview](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab8_webresources/1_webview), and launch the app from a new tab.
+load the unpacked [1_webview](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab8_webresources/angularjs/1_webview), and launch the app from a new tab.
 
 ## Loading external images
 
@@ -73,20 +73,20 @@ Let's change our application to show a small icon in the Todo list if the droppe
 
 1. Before you start firing XHR requests, you must request permissions.
 Since we want to allow users to drag and drop images from any server, we need to request permission to XHR to any URL.
-Change [manifest.json](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/2_loading_resources/manifest.json):
+Change [manifest.json](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/angularjs/2_loading_resources/manifest.json):
     ```json
     "permissions": ["storage", "webview", "<all_urls>"]
     ```
 
-2. Add to your project a placeholder image ![loading.gif](https://github.com/GoogleChrome/chrome-app-codelab/raw/master/lab8_webresources/2_loading_resources/loading.gif) that will be shown while we are loading the proper image.
+2. Add to your project a placeholder image ![loading.gif](https://github.com/GoogleChrome/chrome-app-codelab/raw/master/lab8_webresources/angularjs/2_loading_resources/loading.gif) that will be shown while we are loading the proper image.
 
-3. Add the `<img>` tag to the Todo item on the [index.html](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/2_loading_resources/index.html):
+3. Add the `<img>` tag to the Todo item on the [index.html](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/angularjs/2_loading_resources/index.html):
     ```html
     <img style="max-height: 48px; max-width: 120px;" ng-show="todo.validImage" ng-src="{{todo.imageUrl}}"></img>
     ```
     As you will see soon, this element is only shown when the validImage attribute of the Todo item is true.
 
-4. Add the method loadImage (either in [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/2_loading_resources/controller.js) or in a [separate script file](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/2_loading_resources/loader.js) as we did), that will start a XHR request and execute a callback with a Blob URL:
+4. Add the method loadImage (either in [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/angularjs/2_loading_resources/controller.js) or in a [separate script file](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/angularjs/2_loading_resources/loader.js) as we did), that will start a XHR request and execute a callback with a Blob URL:
     ```js
     var loadImage = function(uri, callback) {
       var xhr = new XMLHttpRequest();
@@ -99,7 +99,7 @@ Change [manifest.json](https://github.com/GoogleChrome/chrome-app-codelab/blob/m
     }
     ```
 
-5. In the [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/2_loading_resources/controller.js), add a new method that will search the scope.todolist looking for images that are not loaded yet:
+5. In the [controller.js](https://github.com/GoogleChrome/chrome-app-codelab/blob/master/lab8_webresources/angularjs/2_loading_resources/controller.js), add a new method that will search the scope.todolist looking for images that are not loaded yet:
     ```js
     // for each image with no imageUrl, start a new loader
     $scope.loadImages = function() {
@@ -162,7 +162,7 @@ then drag and drop the image into the Todo list app.
 Assuming no mistakes were made, you should now have a thumbnail of every image URL dropped into the Todo list app.
 
 > Note: If you get stuck and want to see the app in action, go to `chrome://extensions`,
-load the unpacked [2_loading_resources](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab8_webresources/2_loading_resources), and launch the app from a new tab.
+load the unpacked [2_loading_resources](https://github.com/GoogleChrome/chrome-app-codelab/tree/master/lab8_webresources/angularjs/2_loading_resources), and launch the app from a new tab.
 
 The loadImage() method above is not the best solution for this problem, because it doesn't handle errors correctly and it could cache images in a local filesystem.
 We are working on a library that will be much more robust and easier to use.
