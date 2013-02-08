@@ -171,10 +171,10 @@ We are working on a library that will be much more robust and easier to use.
 
 * The `<webview>` tag allows you to have a controlled browser inside your app.
 You can use it if you have part of your application that is not CSP compatible and you don't have resources to migrate it immediately, for example.
-One feature we didn't mention here is that WebViews can communicate with your app and vice-versa using asynchronous [pushMessages](http://developer.chrome.com/trunk/apps/pushMessaging.html).
+One feature we didn't mention here is that WebViews can communicate with your app and vice-versa using asynchronous [postMessages](https://developer.chrome.com/trunk/apps/app_external.html#postMessage).
 
 * Loading resources like images from the web is not straightforward compared to a standard web page.
-But it's not too different from traditional native platforms, where you need to handle the resource download and, only when it is correctly downloaded, you can render it in the UI.
+But it's not too different from traditional native platforms, where you need to handle the resource download and, only when it is correctly downloaded, you can render it in the UI. We have also developed [a sample library](https://github.com/GoogleChrome/apps-resource-loader) to assyncronously handle resource loading from XHR calls. Feel free to use it in your projects.
 
 # What's next?
 
