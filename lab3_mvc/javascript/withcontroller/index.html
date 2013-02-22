@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="todo.css">
+  </head>
+  <body>
+    <h2>Todo</h2>
+    <div>
+      <span><span id="remaining"></span> of <span id="length"></span> remaining</span>
+      [ <a href="" id="archive">archive</a> ]
+      <ul class="unstyled" id="list">
+      </ul>
+      <form>
+        <input type="text" size="30"
+               placeholder="add new todo here">
+        <input class="btn-primary" type="submit" value="add">
+      </form>
+    </div>
+
+    <!-- poor man's template -->
+    <div id="templates" style="display: none;">
+      <li data-name="list">
+        <input type="checkbox">
+        <span></span>
+      </li>
+    </div>
+
+    <script src="controller.js"></script>
+  </body>
+</html>

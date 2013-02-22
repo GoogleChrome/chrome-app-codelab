@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "Lab5a Storage sync",
+  "version": "1",
+  "app": {
+    "background": {
+      "scripts": ["main.js"]
+    }
+  },
+  "permissions": ["storage"],
+  "icons": { "128": "icon.png" }
+}
+
