@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="todo.css">
+  </head>
+  <body>
+    <h2>Todo</h2>
+    <div>
+      <span><span id="remaining"></span> of <span id="length"></span> remaining</span>
+      [ <a href="" id="archive">archive</a> ]
+      <ul class="unstyled" id="list">
+      </ul>
+      <form>
+        <input type="text" size="30"
+               placeholder="add new todo here">
+        <input class="btn-primary" type="submit" value="add">
+      </form>
+      <button id="importGTasks">import tasks from GTasks</button>
+      <webview></webview>
+    </div>
+
+    <!-- poor man's template -->
+    <div id="templates" style="display: none;">
+      <li data-name="list">
+        <input type="checkbox">
+        <img style="max-height: 48px; max-width: 120px;"></img>
+        <span></span>
+        <a style="display: none;" href="">(view url)</a>
+      </li>
+    </div>
+
+    <script src="loader.js"></script>
+    <script src="controller.js"></script>
+    <script src="gapi_tasks.js"></script>
+  </body>
+</html>

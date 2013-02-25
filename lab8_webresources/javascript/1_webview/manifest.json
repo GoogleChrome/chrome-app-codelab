@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "Lab8a Webview and Web resources",
+  "version": "1",
+  "app": {
+    "background": {
+      "scripts": ["main.js"]
+    }
+  },
+  "permissions": ["storage", "webview"],
+  "icons": { "128": "icon.png" }
+}
+
