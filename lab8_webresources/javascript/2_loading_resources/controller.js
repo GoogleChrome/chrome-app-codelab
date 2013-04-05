@@ -11,7 +11,7 @@
     this.todos = {};
     this.listeners = [];
   }
-  
+
   TodoModel.prototype.setTodos = function(todos) {
     this.todos = todos;
     var maxId = 0;
@@ -78,7 +78,7 @@ const PLACEHOLDER_IMAGE = "loading.gif";
   var dropText = document.getElementById('dropText');
   dropText.innerText = defaultDropText;
 
-  // on dragOver, we will change the style and text accordingly, depending on 
+  // on dragOver, we will change the style and text accordingly, depending on
   // the data being transfered
   var dragOver = function(e) {
     e.stopPropagation();
@@ -94,8 +94,8 @@ const PLACEHOLDER_IMAGE = "loading.gif";
   }
 
   var isValid = function(dataTransfer) {
-    return dataTransfer && dataTransfer.types 
-      && ( dataTransfer.types.indexOf('Files') >= 0 
+    return dataTransfer && dataTransfer.types
+      && ( dataTransfer.types.indexOf('Files') >= 0
         || dataTransfer.types.indexOf('text/uri-list') >=0 )
   }
 
@@ -131,7 +131,7 @@ const PLACEHOLDER_IMAGE = "loading.gif";
 
     dragLeave();
   }
-  
+
   exports.setDragHandlers = function(model) {
     document.body.addEventListener("dragover", dragOver, false);
     document.body.addEventListener("dragleave", dragLeave, false);
@@ -206,7 +206,7 @@ window.addEventListener('DOMContentLoaded', function() {
         model.addTodo('build a Chrome App', false);
       }
     });
-  } 
+  }
 
   var storageSave = function() {
     chrome.storage.sync.set({'todolist': model.todos});
@@ -260,7 +260,7 @@ window.addEventListener('DOMContentLoaded', function() {
       checkbox.checked = model.isDone;
       desc.innerText = model.text;
       desc.className = "done-"+model.isDone;
-      
+
       // load image, if this ToDo has image data
       maybeStartImageLoader(todoElement, model);
     }
@@ -293,15 +293,15 @@ window.addEventListener('DOMContentLoaded', function() {
    * storage. On browser restart (for browser upgrade, for example)
    * the method setInitialState is called and the saved value
    * restored.
-   * 
+   *
    * Added for Codelab 6
    **/
   var newTodoInput = document.querySelector('input[type="text"]');
- 
+
   window.clearInitialState = function() {
     chrome.storage.local.set({'newtodo': null});
   }
-   
+
   window.setInitialState = function() {
     chrome.storage.local.get('newtodo', function(data) {
       if (newTodoInput && data && data.newtodo) {
@@ -310,42 +310,14 @@ window.addEventListener('DOMContentLoaded', function() {
       }
     });
   };
-     
+
   var saveTransientState = function() {
     chrome.storage.local.set({'newtodo': newTodoInput.value});
   };
 
   newTodoInput.addEventListener('keypress' , function() {
-    saveTransientState();    
+    saveTransientState();
   })
-   
-
-
-  /**
-   * Using the GoogleTasks API, get the logged user's tasks of his first 
-   * task list and add them to the ToDo list
-   * 
-   * Added for Codelab 7
-   **/
-  document.getElementById('importGTasks').addEventListener('click', function() {
-    var api = new TasksAPI();
-    var clientId = "<GET_YOURS_AT_https://code.google.com/apis/console>";
-    api.authenticate(clientId, function() {
-      api.getLists(function(result) {
-        console.log(result);
-        if (!result || !result.items || result.items.length==0) {
-          throw "No task lists available";
-        }
-        var listId=result.items[0].id;
-        api.getTasks(listId, function(tasks) {
-          console.log(tasks);
-          for (var j=0; j<tasks.items.length; j++) {
-            model.addTodo(tasks.items[j].title, tasks.items[j].status!='needsAction');
-          }
-        });
-      });
-    });
-  });
 
 
   /**
@@ -366,10 +338,10 @@ window.addEventListener('DOMContentLoaded', function() {
         img.style.display = 'inline';
       }
     } else {
-      img.style.display = 'none'; 
+      img.style.display = 'none';
     }
   };
-   
+
 
 });
 
