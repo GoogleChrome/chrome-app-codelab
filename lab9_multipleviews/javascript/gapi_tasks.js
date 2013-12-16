@@ -1,7 +1,7 @@
 (function(context) {
 
   TasksAPI = function() {
-  }
+  };
 
   TasksAPI.prototype.authenticate = function(clientId, success) {
     var authUrl="https://accounts.google.com/o/oauth2/auth"+
@@ -14,7 +14,7 @@
       url: authUrl,
       interactive: true
     };
-    
+
     var _this = this;
 
     chrome.experimental.identity.launchWebAuthFlow(identityDetails, function(responseUrl) {
@@ -27,15 +27,15 @@
 
     });
 
-  }
+  };
 
   TasksAPI.prototype.getLists = function(callback) {
     this.request("users/@me/lists", callback);
-  }
+  };
 
   TasksAPI.prototype.getTasks = function(listId, callback) {
     this.request("lists/"+listId+"/tasks", callback);
-  }
+  };
 
   TasksAPI.prototype.request = function(method, callback, args) {
     var xhr = new XMLHttpRequest();
@@ -48,12 +48,12 @@
     var url="https://www.googleapis.com/tasks/v1/"+method+"?access_token="+this.accessToken;
     if (args) for (arg in args) {
       // TODO: urlescape arg and args[arg]
-      url += "&"+arg+"="+args[arg];   
+      url += "&"+arg+"="+args[arg];
     }
 
     xhr.open("GET", url);
     xhr.send();
-  }
+  };
 
   context.TasksAPI = TasksAPI;
 })(window);

@@ -1,15 +1,15 @@
 function DropCtrl($scope) {
   var defaultDropText = "Or drop files here...";
   $scope.dropText = defaultDropText;
-  
-  // on dragOver, we will change the style and text accordingly, depending on 
+
+  // on dragOver, we will change the style and text accordingly, depending on
   // the data being transfered
   var dragOver = function(e) {
     e.stopPropagation();
     e.preventDefault();
-    var valid = e.dataTransfer && e.dataTransfer.types 
-      && ( e.dataTransfer.types.indexOf('Files') >= 0 
-        || e.dataTransfer.types.indexOf('text/uri-list') >=0 )
+    var valid = e.dataTransfer && e.dataTransfer.types
+      && ( e.dataTransfer.types.indexOf('Files') >= 0
+        || e.dataTransfer.types.indexOf('text/uri-list') >=0 );
     $scope.$apply(function() {
       $scope.dropText = valid ? "Drop files and remote images and they will become Todos"
           : "Can only drop files and remote images here";
@@ -47,7 +47,7 @@ function DropCtrl($scope) {
       $parentScope.save();
       $parentScope.$apply();
     });
-  }
+  };
 
   var dragLeave = function(e) {
     $scope.$apply(function() {

@@ -8,7 +8,7 @@ window.addEventListener('DOMContentLoaded', function() {
   dropText.innerText = defaultDropText;
 });
 
-  // on dragOver, we will change the style and text accordingly, depending on 
+  // on dragOver, we will change the style and text accordingly, depending on
   // the data being transfered
   var dragOver = function(e) {
     e.stopPropagation();
@@ -21,20 +21,20 @@ window.addEventListener('DOMContentLoaded', function() {
       dropText.innerText="Can only drop files and remote images here";
       document.body.classList.add("invalid-dragging");
     }
-  }
+  };
 
   var isValid = function(dataTransfer) {
-    return dataTransfer && dataTransfer.types 
-      && ( dataTransfer.types.indexOf('Files') >= 0 
-        || dataTransfer.types.indexOf('text/uri-list') >=0 )
-  }
+    return dataTransfer && dataTransfer.types
+      && ( dataTransfer.types.indexOf('Files') >= 0
+        || dataTransfer.types.indexOf('text/uri-list') >=0 );
+  };
 
   // reset style and text to the default
   var dragLeave = function(e) {
     dropText.innerText=defaultDropText;
     document.body.classList.remove('dragging');
     document.body.classList.remove('invalid-dragging');
-  }
+  };
 
   // on drop, we create the appropriate TODOs using dropped data
   var drop = function(e, model) {
@@ -60,8 +60,8 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     dragLeave();
-  }
-  
+  };
+
 
   window.setDragHandlers = function(model) {
     document.body.addEventListener("dragover", dragOver, false);
@@ -69,5 +69,5 @@ window.addEventListener('DOMContentLoaded', function() {
     document.body.addEventListener("drop", function(e) {
         drop(e, model);
       }, false);
-  }
+  };
 

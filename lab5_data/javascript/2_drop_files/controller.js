@@ -10,8 +10,8 @@
   var TodoModel = function() {
     this.todos = {};
     this.listeners = [];
-  }
-  
+  };
+
   TodoModel.prototype.setTodos = function(todos) {
     this.todos = todos;
     var maxId = 0;
@@ -21,12 +21,12 @@
     }
     nextId = maxId + 1;
     this.notifyListeners('reset');
-  }
+  };
 
   TodoModel.prototype.clearTodos = function() {
     this.todos = {};
     this.notifyListeners('removed');
-  }
+  };
 
   TodoModel.prototype.archiveDone = function() {
     var oldTodos = this.todos;
@@ -37,31 +37,31 @@
       }
     }
     this.notifyListeners('archived');
-  }
+  };
 
   TodoModel.prototype.setTodoState = function(id, isDone) {
     if ( this.todos[id].isDone != isDone ) {
       this.todos[id].isDone = isDone;
       this.notifyListeners('stateChanged', id);
     }
-  }
+  };
 
   TodoModel.prototype.addTodo = function(text, isDone, extras) {
     var id = nextId++;
     this.todos[id]={'id': id, 'text': text, 'isDone': isDone, 'extras': extras};
     this.notifyListeners('added', id);
-  }
+  };
 
   TodoModel.prototype.addListener = function(listener) {
     this.listeners.push(listener);
-  }
+  };
 
   TodoModel.prototype.notifyListeners = function(change, param) {
     var this_ = this;
     this.listeners.forEach(function(listener) {
       listener(this_, change, param);
     });
-  }
+  };
 
   exports.TodoModel = TodoModel;
 
@@ -76,7 +76,7 @@
   var dropText = document.getElementById('dropText');
   dropText.innerText = defaultDropText;
 
-  // on dragOver, we will change the style and text accordingly, depending on 
+  // on dragOver, we will change the style and text accordingly, depending on
   // the data being transfered
   var dragOver = function(e) {
     e.stopPropagation();
@@ -89,20 +89,20 @@
       dropText.innerText="Can only drop files and remote images here";
       document.body.classList.add("invalid-dragging");
     }
-  }
+  };
 
   var isValid = function(dataTransfer) {
-    return dataTransfer && dataTransfer.types 
-      && ( dataTransfer.types.indexOf('Files') >= 0 
-        || dataTransfer.types.indexOf('text/uri-list') >=0 )
-  }
+    return dataTransfer && dataTransfer.types
+      && ( dataTransfer.types.indexOf('Files') >= 0
+        || dataTransfer.types.indexOf('text/uri-list') >=0 );
+  };
 
   // reset style and text to the default
   var dragLeave = function(e) {
     dropText.innerText=defaultDropText;
     document.body.classList.remove('dragging');
     document.body.classList.remove('invalid-dragging');
-  }
+  };
 
   // on drop, we create the appropriate TODOs using dropped data
   var drop = function(e, model) {
@@ -122,15 +122,15 @@
     }
 
     dragLeave();
-  }
-  
+  };
+
   exports.setDragHandlers = function(model) {
     document.body.addEventListener("dragover", dragOver, false);
     document.body.addEventListener("dragleave", dragLeave, false);
     document.body.addEventListener("drop", function(e) {
         drop(e, model);
       }, false);
-  }
+  };
 
 })(window);
 
@@ -189,7 +189,7 @@ window.addEventListener('DOMContentLoaded', function() {
         model.addTodo('build a Chrome App', false);
       }
     });
-  } 
+  };
 
   var storageSave = function() {
     chrome.storage.sync.set({'todolist': model.todos});
@@ -219,7 +219,7 @@ window.addEventListener('DOMContentLoaded', function() {
     checkbox.addEventListener('change', function(e) {
       model.setTodoState(todoObj.id, e.target.checked);
     });
-  }
+  };
 
 
   /**
@@ -235,7 +235,7 @@ window.addEventListener('DOMContentLoaded', function() {
       desc.innerText = model.text;
       desc.className = "done-"+model.isDone;
     }
-  }
+  };
 
   /**
    * Recalculate total number of ToDos and remaining ToDos and update
@@ -252,10 +252,10 @@ window.addEventListener('DOMContentLoaded', function() {
     }
     document.getElementById('remaining').innerText = notDone;
     document.getElementById('length').innerText = count;
-  }
+  };
 
   storageLoad();
   setDragHandlers(model);
-   
+
 });
 

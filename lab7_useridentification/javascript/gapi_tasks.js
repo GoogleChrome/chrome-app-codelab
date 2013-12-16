@@ -14,7 +14,7 @@
       url: authUrl,
       interactive: true
     };
-    
+
     var _this = this;
 
     chrome.experimental.identity.launchWebAuthFlow(identityDetails, function(responseUrl) {
@@ -48,7 +48,7 @@
     var url="https://www.googleapis.com/tasks/v1/"+method+"?access_token="+this.accessToken;
     if (args) for (arg in args) {
       // TODO: urlescape arg and args[arg]
-      url += "&"+arg+"="+args[arg];   
+      url += "&"+arg+"="+args[arg];
     }
 
     xhr.open("GET", url);

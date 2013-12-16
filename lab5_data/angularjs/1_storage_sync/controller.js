@@ -17,7 +17,7 @@ function TodoCtrl($scope) {
         {text:'learn angular', done:true},
         {text:'build an angular app', done:false}];
     }
-  } 
+  };
 
   $scope.save = function() {
     chrome.storage.sync.set({'todolist': $scope.todos});
@@ -35,7 +35,7 @@ function TodoCtrl($scope) {
     });
     return count;
   };
- 
+
   $scope.archive = function() {
     var oldTodos = $scope.todos;
     $scope.todos = [];

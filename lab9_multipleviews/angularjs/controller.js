@@ -18,7 +18,7 @@ function TodoCtrl($scope) {
         {text:'learn angular', done:true},
         {text:'build an angular app', done:false}];
     }
-  } 
+  };
 
   $scope.save = function() {
     chrome.storage.sync.set({'todolist': $scope.todos});
@@ -41,7 +41,7 @@ function TodoCtrl($scope) {
     });
     return count;
   };
- 
+
   $scope.archive = function() {
     var oldTodos = $scope.todos;
     $scope.todos = [];
@@ -51,21 +51,21 @@ function TodoCtrl($scope) {
   };
 
 
-  // Once the main window is created create the drop area. 
+  // Once the main window is created create the drop area.
   chrome.app.window.create('droparea.html',
     {id: 'dropArea', width: 200, height: 200 },
     function(dropWin) {
-      dropWin.contentWindow.$parentScope = $scope; 
+      dropWin.contentWindow.$parentScope = $scope;
     });
-}
+};
 
 
- 
+
 var newTodoInput = null;
 
 var clearInitialState = function() {
   chrome.storage.local.set({'newtodo': null});
-}
+};
 
 var setInitialState = function() {
   chrome.storage.local.get('newtodo', function(data) {
@@ -82,8 +82,8 @@ window.addEventListener('load', function() {
   };
   newTodoInput = document.querySelector('input[type="text"]');
   newTodoInput.addEventListener('keypress' , function() {
-    saveTransientState();    
-  })
+    saveTransientState();
+  });
 });
 
 
