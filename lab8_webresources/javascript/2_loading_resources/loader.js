@@ -6,4 +6,4 @@ var loadImage = function(uri, callback) {
   }
   xhr.open('GET', uri, true);
   xhr.send();
-}
+};

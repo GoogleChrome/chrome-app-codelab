@@ -13,20 +13,20 @@ function TodoCtrl($scope) {
   var defaultDropText = "Or drop files here...";
   $scope.dropText = defaultDropText;
 
-  // on dragOver, we will change the style and text accordingly, depending on 
+  // on dragOver, we will change the style and text accordingly, depending on
   // the data being transfered
   var dragOver = function(e) {
     e.stopPropagation();
     e.preventDefault();
-    var valid = e.dataTransfer && e.dataTransfer.types 
-      && ( e.dataTransfer.types.indexOf('Files') >= 0 
-        || e.dataTransfer.types.indexOf('text/uri-list') >=0 )
+    var valid = e.dataTransfer && e.dataTransfer.types
+      && ( e.dataTransfer.types.indexOf('Files') >= 0
+        || e.dataTransfer.types.indexOf('text/uri-list') >=0 );
     $scope.$apply(function() {
       $scope.dropText = valid ? "Drop files and remote images and they will become Todos"
           : "Can only drop files and remote images here";
       $scope.dropClass = valid ? "dragging" : "invalid-dragging";
     });
-  }
+  };
 
   // reset style and text to the default
   var dragLeave = function(e) {
@@ -34,7 +34,7 @@ function TodoCtrl($scope) {
       $scope.dropText = defaultDropText;
       $scope.dropClass = '';
     });
-  }
+  };
 
   // on drop, we create the appropriate TODOs using dropped data
   var drop = function(e) {
@@ -68,7 +68,7 @@ function TodoCtrl($scope) {
       if (hasImage) $scope.loadImages();
       $scope.save();
     });
-  }
+  };
 
   // for each image with no imageUrl, start a new loader
   $scope.loadImages = function() {
@@ -107,7 +107,7 @@ function TodoCtrl($scope) {
         {text:'learn angular', done:true},
         {text:'build an angular app', done:false}];
     }
-  } 
+  };
 
   $scope.save = function() {
     chrome.storage.sync.set({'todolist': $scope.todos});
@@ -130,7 +130,7 @@ function TodoCtrl($scope) {
     });
     return count;
   };
- 
+
   $scope.archive = function() {
     var oldTodos = $scope.todos;
     $scope.todos = [];
@@ -139,14 +139,14 @@ function TodoCtrl($scope) {
     });
   };
 
-}
+};
 
 
 var newTodoInput = null;
 
 var clearInitialState = function() {
   chrome.storage.local.set({'newtodo': null});
-}
+};
 
 var setInitialState = function() {
   chrome.storage.local.get('newtodo', function(data) {
@@ -163,7 +163,7 @@ window.addEventListener('load', function() {
   };
   newTodoInput = document.querySelector('input[type="text"]');
   newTodoInput.addEventListener('keypress' , function() {
-    saveTransientState();    
-  })
+    saveTransientState();
+  });
 });
 

@@ -10,8 +10,8 @@
   var TodoModel = function() {
     this.todos = {};
     this.listeners = [];
-  }
-  
+  };
+
   TodoModel.prototype.setTodos = function(todos) {
     this.todos = todos;
     var maxId = 0;
@@ -21,12 +21,12 @@
     }
     nextId = maxId + 1;
     this.notifyListeners('reset');
-  }
+  };
 
   TodoModel.prototype.clearTodos = function() {
     this.todos = {};
     this.notifyListeners('removed');
-  }
+  };
 
   TodoModel.prototype.archiveDone = function() {
     var oldTodos = this.todos;
@@ -37,31 +37,31 @@
       }
     }
     this.notifyListeners('archived');
-  }
+  };
 
   TodoModel.prototype.setTodoState = function(id, isDone) {
     if ( this.todos[id].isDone != isDone ) {
       this.todos[id].isDone = isDone;
       this.notifyListeners('stateChanged', id);
     }
-  }
+  };
 
   TodoModel.prototype.addTodo = function(text, isDone, extras) {
     var id = nextId++;
     this.todos[id]={'id': id, 'text': text, 'isDone': isDone, 'extras': extras};
     this.notifyListeners('added', id);
-  }
+  };
 
   TodoModel.prototype.addListener = function(listener) {
     this.listeners.push(listener);
-  }
+  };
 
   TodoModel.prototype.notifyListeners = function(change, param) {
     var this_ = this;
     this.listeners.forEach(function(listener) {
       listener(this_, change, param);
     });
-  }
+  };
 
   exports.TodoModel = TodoModel;
 
@@ -134,7 +134,7 @@ window.addEventListener('DOMContentLoaded', function() {
         model.addTodo('build a Chrome App', false);
       }
     });
-  } 
+  };
 
   var storageSave = function() {
     chrome.storage.sync.set({'todolist': model.todos});
@@ -173,7 +173,7 @@ window.addEventListener('DOMContentLoaded', function() {
       });
       showUrl.style.display = 'inline';
     }
-  }
+  };
 
 
   /**
@@ -188,7 +188,7 @@ window.addEventListener('DOMContentLoaded', function() {
       checkbox.checked = model.isDone;
       desc.innerText = model.text;
       desc.className = "done-"+model.isDone;
-      
+
       // load image, if this ToDo has image data
       maybeStartImageLoader(todoElement, model);
     }
@@ -209,7 +209,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
     document.getElementById('remaining').innerText = notDone;
     document.getElementById('length').innerText = count;
-  }
+  };
 
   storageLoad();
 
@@ -220,15 +220,15 @@ window.addEventListener('DOMContentLoaded', function() {
    * storage. On browser restart (for browser upgrade, for example)
    * the method setInitialState is called and the saved value
    * restored.
-   * 
+   *
    * Added for Codelab 6
    **/
   var newTodoInput = document.querySelector('input[type="text"]');
- 
+
   window.clearInitialState = function() {
     chrome.storage.local.set({'newtodo': null});
-  }
-   
+  };
+
   window.setInitialState = function() {
     chrome.storage.local.get('newtodo', function(data) {
       if (newTodoInput && data && data.newtodo) {
@@ -237,21 +237,21 @@ window.addEventListener('DOMContentLoaded', function() {
       }
     });
   };
-     
+
   var saveTransientState = function() {
     chrome.storage.local.set({'newtodo': newTodoInput.value});
   };
 
   newTodoInput.addEventListener('keypress' , function() {
-    saveTransientState();    
-  })
-   
+    saveTransientState();
+  });
+
 
 
   /**
-   * Using the GoogleTasks API, get the logged user's tasks of his first 
+   * Using the GoogleTasks API, get the logged user's tasks of his first
    * task list and add them to the ToDo list
-   * 
+   *
    * Added for Codelab 7
    **/
   document.getElementById('importGTasks').addEventListener('click', function() {
@@ -293,14 +293,14 @@ window.addEventListener('DOMContentLoaded', function() {
         img.style.display = 'inline';
       }
     } else {
-      img.style.display = 'none'; 
+      img.style.display = 'none';
     }
   };
-   
 
 
 
-  // Once the main window is created create the drop area. 
+
+  // Once the main window is created create the drop area.
   chrome.app.window.create('droparea.html',
     {id: 'dropArea', width: 200, height: 200 },
     function(dropWin) {

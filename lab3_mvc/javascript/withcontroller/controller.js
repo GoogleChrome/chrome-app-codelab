@@ -11,7 +11,7 @@
     this.todos = {};
     this.listeners = [];
   }
-  
+
   TodoModel.prototype.clearTodos = function() {
     this.todos = {};
     this.notifyListeners('removed');

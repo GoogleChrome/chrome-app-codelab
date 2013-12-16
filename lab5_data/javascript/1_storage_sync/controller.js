@@ -10,8 +10,8 @@
   var TodoModel = function() {
     this.todos = {};
     this.listeners = [];
-  }
-  
+  };
+
   TodoModel.prototype.setTodos = function(todos) {
     this.todos = todos;
     var maxId = 0;
@@ -21,12 +21,12 @@
     }
     nextId = maxId + 1;
     this.notifyListeners('reset');
-  }
+  };
 
   TodoModel.prototype.clearTodos = function() {
     this.todos = {};
     this.notifyListeners('removed');
-  }
+  };
 
   TodoModel.prototype.archiveDone = function() {
     var oldTodos = this.todos;
@@ -37,31 +37,31 @@
       }
     }
     this.notifyListeners('archived');
-  }
+  };
 
   TodoModel.prototype.setTodoState = function(id, isDone) {
     if ( this.todos[id].isDone != isDone ) {
       this.todos[id].isDone = isDone;
       this.notifyListeners('stateChanged', id);
     }
-  }
+  };
 
   TodoModel.prototype.addTodo = function(text, isDone) {
     var id = nextId++;
     this.todos[id]={'id': id, 'text': text, 'isDone': isDone};
     this.notifyListeners('added', id);
-  }
+  };
 
   TodoModel.prototype.addListener = function(listener) {
     this.listeners.push(listener);
-  }
+  };
 
   TodoModel.prototype.notifyListeners = function(change, param) {
     var this_ = this;
     this.listeners.forEach(function(listener) {
       listener(this_, change, param);
     });
-  }
+  };
 
   exports.TodoModel = TodoModel;
 
@@ -122,7 +122,7 @@ window.addEventListener('DOMContentLoaded', function() {
         model.addTodo('build a Chrome App', false);
       }
     });
-  } 
+  };
 
   var storageSave = function() {
     chrome.storage.sync.set({'todolist': model.todos});
@@ -152,7 +152,7 @@ window.addEventListener('DOMContentLoaded', function() {
     checkbox.addEventListener('change', function(e) {
       model.setTodoState(todoObj.id, e.target.checked);
     });
-  }
+  };
 
 
   /**
@@ -168,7 +168,7 @@ window.addEventListener('DOMContentLoaded', function() {
       desc.innerText = model.text;
       desc.className = "done-"+model.isDone;
     }
-  }
+  };
 
   /**
    * Recalculate total number of ToDos and remaining ToDos and update
@@ -185,9 +185,9 @@ window.addEventListener('DOMContentLoaded', function() {
     }
     document.getElementById('remaining').innerText = notDone;
     document.getElementById('length').innerText = count;
-  }
+  };
 
   storageLoad();
-   
+
 });
 

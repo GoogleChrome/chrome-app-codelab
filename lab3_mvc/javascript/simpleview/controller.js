@@ -10,7 +10,7 @@
     this.contents = '';
     this.listeners = [];
   }
-  
+
   TodoModel.prototype.setContents = function(contents) {
     if (this.contents !== contents) {
       this.contents = contents;
@@ -20,7 +20,7 @@
 
   TodoModel.prototype.bindToInput = function(input) {
     var _this = this;
-    
+
     var eventHandler = function(e) {
       if (typeof(e.target.value) != 'undefined') {
         _this.setContents(e.target.value);
@@ -65,6 +65,6 @@ window.addEventListener('DOMContentLoaded', function() {
 
   model.bindToView(todoText);
   model.bindToInput(newTodo);
-   
+
 })
 
