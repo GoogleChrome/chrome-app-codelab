@@ -1,6 +1,6 @@
 /**
 
-  A poor man's controller - a very simple module with basic MVC functionaliies
+  A poor man's controller - a very simple module with basic MVC functionalities
 
 **/
 (function(exports) {
