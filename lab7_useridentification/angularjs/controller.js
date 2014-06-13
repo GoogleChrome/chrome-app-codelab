@@ -148,9 +148,7 @@ window.addEventListener('load', function() {
     chrome.storage.local.set({'newtodo': newTodoInput.value});
   };
   newTodoInput = document.querySelector('input[type="text"]');
-  newTodoInput.addEventListener('keypress' , function() {
-    saveTransientState();    
-  })
+  newTodoInput.addEventListener('input', saveTransientState);
 });
 
 
