@@ -278,9 +278,6 @@ window.addEventListener('DOMContentLoaded', function() {
     chrome.storage.local.set({'newtodo': newTodoInput.value});
   };
 
-  newTodoInput.addEventListener('keypress' , function() {
-    saveTransientState();    
-  })
-   
+  newTodoInput.addEventListener('input', saveTransientState);
 });
 
